@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
@@ -20,6 +21,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.github.chrisbanes.photoview.OnPhotoTapListener;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.zwh.common.R;
 import com.zwh.common.base.BaseActivity;
 import com.zwh.common.commonAdapter.ViewPagerFixed;
@@ -27,8 +30,6 @@ import com.zwh.common.commonAdapter.ViewPagerFixed;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.co.senab.photoview.PhotoView;
-import uk.co.senab.photoview.PhotoViewAttacher;
 
 
 /**
@@ -177,17 +178,12 @@ public class BigImagePagerActivity extends BaseActivity {
                 final PhotoView imageView = (PhotoView) view.findViewById(R.id.image);
 
                 //单击图片退出
-                imageView.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
+                imageView.setOnPhotoTapListener(new OnPhotoTapListener() {
                     @Override
-                    public void onPhotoTap(View view, float x, float y) {
+                    public void onPhotoTap(ImageView view, float x, float y) {
                         BigImagePagerActivity.this.finish();
                         BigImagePagerActivity.this.overridePendingTransition(R.anim.act_fade_in_center,
                                 R.anim.act_fade_out_center);
-                    }
-
-                    @Override
-                    public void onOutsidePhotoTap() {
-
                     }
                 });
 
