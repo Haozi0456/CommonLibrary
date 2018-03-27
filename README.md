@@ -2,9 +2,10 @@
 公共库模版
 
 [![](https://jitpack.io/v/Haozi0456/CommonLibrary.svg)](https://jitpack.io/#Haozi0456/CommonLibrary)
- 
+
+
 包含的库有:
-//绑定注解，专业解决各种findViewById 此库必须写到app的bulider.gradle里,不然无效
+    //绑定注解，专业解决各种findViewById 此库必须写到app的bulider.gradle里,不然无效
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
@@ -27,6 +28,6 @@
 
     //照片选择 仿微信
     compile('com.lzy.widget:imagepicker:0.6.1') {
-        //exclude module: 'PhotoView'//移除重复的photoview包
+    //exclude module: 'PhotoView'//移除重复的photoview包
         exclude group: 'com.github.chrisbanes.photoview', module: 'library'
     }
