@@ -3,7 +3,8 @@
 
 [![](https://jitpack.io/v/Haozi0456/CommonLibrary.svg)](https://jitpack.io/#Haozi0456/CommonLibrary)
  
-使用方法:
+ 
+ 使用方法:
 
 Step 1. Add the JitPack repository to your build file
 
