@@ -2,8 +2,27 @@
 公共库模版
 
 [![](https://jitpack.io/v/Haozi0456/CommonLibrary.svg)](https://jitpack.io/#Haozi0456/CommonLibrary)
+ 
+使用方法:
+
+Step 1. Add the JitPack repository to your build file
+
+Add it in your root build.gradle at the end of repositories:
+
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+Step 2. Add the dependency
+
+	dependencies {
+	        compile 'com.github.Haozi0456:CommonLibrary:v1.0.7'
+	}
 
 
+ 
 包含的库有:
 
     //绑定注解，专业解决各种findViewById 此库必须写到app的bulider.gradle里,不然无效
