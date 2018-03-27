@@ -5,6 +5,7 @@
 
 
 包含的库有:
+
     //绑定注解，专业解决各种findViewById 此库必须写到app的bulider.gradle里,不然无效
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
