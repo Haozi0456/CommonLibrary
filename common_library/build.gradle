@@ -39,6 +39,10 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.android.support:appcompat-v7:26.1.0'
 
+    //绑定注解，专业解决各种findViewById 此库必须写到app的bulider.gradle里,不然无效
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+
     //网络请求
     compile 'com.lzy.net:okgo:3.0.4'
 
