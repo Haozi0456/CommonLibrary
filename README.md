@@ -55,10 +55,10 @@ Step 2. Add the dependency
     }
     
    
-   ##常用库可选项,此CommonLibrary暂未引入,需按需引用
+   ## 常用库可选项,此CommonLibrary暂未引入,需按需引用
    
    
-    /********************常用必备***********************************/
+    ///********************常用必备***********************************/
     //绑定注解，专业解决各种findViewById 此库必须写到app的bulider.gradle里,不然无效
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
@@ -75,6 +75,7 @@ Step 2. Add the dependency
     // glide图片加载库
     compile 'com.github.bumptech.glide:glide:4.6.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
+    
     //glide的网路请求插件
     compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
 
@@ -90,15 +91,16 @@ Step 2. Add the dependency
     //图片缩放 沉浸式状态栏
     compile 'com.github.chrisbanes:PhotoView:2.1.3'
 
-    /********************常用必备***********************************/
+    ///********************常用必备***********************************/
 
 
-    /********************按需增加***********************************/
+    ///********************按需增加***********************************/
 
     //底部导航栏
     compile 'com.ashokvarma.android:bottom-navigation-bar:2.0.2'
 
 //    compile 'com.nineoldandroids:library:2.4.0'
+
     //下拉刷新
     compile 'cn.bingoogolapple:bga-refreshlayout:1.1.6@aar'
 
@@ -151,4 +153,4 @@ Step 2. Add the dependency
     compile 'com.github.vondear:RxTools:v1.7.6.4'
     //通讯录
     compile 'com.github.mcxtzhang:SuspensionIndexBar:V1.0.0'
-    /********************按需增加***********************************/
+    ///********************按需增加***********************************/
