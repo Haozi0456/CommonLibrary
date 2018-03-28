@@ -59,6 +59,8 @@ Step 2. Add the dependency
    
    
     ///********************常用必备***********************************/
+    
+    
     //绑定注解，专业解决各种findViewById 此库必须写到app的bulider.gradle里,不然无效
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
@@ -109,8 +111,10 @@ Step 2. Add the dependency
         //exclude module: 'PhotoView'//移除重复的photoview包
         exclude group: 'com.github.chrisbanes.photoview', module: 'library'
     }
+    
     //全屏适配库
 //    compile 'com.zhy:autolayout:1.4.5'
+
     //流程指示器
     //compile 'com.github.baoyachi:StepView:1.9'
 
