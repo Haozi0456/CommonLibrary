@@ -54,9 +54,11 @@ Step 2. Add the dependency
         exclude group: 'com.github.chrisbanes.photoview', module: 'library'
     }
     
-    
-    
-    /********************常用必备***********************************/
+   
+   ##常用库可选项,此CommonLibrary暂未引入,需按需引用
+   
+   
+    /********************常用必备***********************************/
     //绑定注解，专业解决各种findViewById 此库必须写到app的bulider.gradle里,不然无效
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
@@ -116,9 +118,11 @@ Step 2. Add the dependency
 
     //底部选择
     compile 'com.contrarywind:Android-PickerView:3.2.5'
+    
     //蓝牙链接
 //    compile 'com.junkchen.blelib:blelib:1.2.4'
     compile 'com.inuker.bluetooth:library:1.4.0'
+    
     //图片压缩
     compile 'com.zxy.android:tiny:0.1.0'
 
