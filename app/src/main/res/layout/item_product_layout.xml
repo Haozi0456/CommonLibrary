@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/click_background_style"
+              android:gravity="center_vertical"
+              android:orientation="horizontal"
+              android:padding="@dimen/margin_8_dp"
+    >
+
+
+    <ImageView
+        android:id="@+id/iconImage"
+        android:layout_width="@dimen/Size_60"
+        android:layout_height="@dimen/Size_60"
+
+        android:scaleType="fitXY"
+        android:src="@drawable/icon_preload"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="@dimen/margin_8_dp"
+        android:layout_marginRight="@dimen/margin_8_dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/nameView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="汗王宫"
+            android:textColor="@color/text_light_black"
+            android:textSize="@dimen/textSize_small"/>
+
+        <TextView
+            android:id="@+id/versionView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="版本:3.0"
+            android:textColor="@color/text_dark"
+            android:layout_marginTop="@dimen/margin_2_dp"
+            android:textSize="@dimen/textSize_x_small"/>
+
+        <TextView
+            android:id="@+id/timeView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上线时间:2016-10-20"
+            android:layout_marginTop="@dimen/margin_2_dp"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/textSize_x_small"/>
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin_8_dp"
+        android:background="@drawable/icon_next_arrow"
+        />
+</LinearLayout>

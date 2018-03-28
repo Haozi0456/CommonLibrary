@@ -1,0 +1,38 @@
+[
+  {
+    "title": "汗王宫",
+    "time": "2016-08-30",
+    "version": "3.0",
+    "icon":"/appicons/hanwanggong.png",
+    "imgBg":"/appbg/hwg_bg.png",
+    "url":"http://a.app.qq.com/o/simple.jsp?pkgname=com.dct.hwg",
+    "des": "依托汗王宫遗址相关历史文献资料以及汗王宫遗址图片、三维模型、动画等多媒体数字成果为基础档案资料，借助增强现实、虚拟互动等展示手段展现历史上汗王宫的恢弘场景，制作观众互动增强现实APP，设计与遗址特点对应的展示热点，实现遗址本体的增强现实展示。"
+  },
+  {
+    "title": "苏州博物馆",
+    "time": "2016-10-20",
+    "version": "V2.1.20161019",
+    "icon":"/appicons/suzhoubowuguan.png",
+    "imgBg":"/appbg/szbwg_bg.png",
+    "url":"http://a.app.qq.com/o/simple.jsp?pkgname=com.dct.suzhou",
+    "des": "新版智能导览系统在原有苏州博物馆数字化移动应用所提供馆内展品、藏品的多媒体信息展示、查询等基本功能的基础上，基于GIS技术、WIFI室内定位技术、ibeacon定位技术，观众行为分析技术，结合智能导览设备中所包含的方向感应器、重力感应器、陀螺仪、加速度感应器、GPS等多种传感器，提供针对观众个体的个性化、智能化、具备多种互动方式的数字化展陈展示。"
+  },
+  {
+    "title": "玩转南越",
+    "time": "2016-08-31",
+    "version": "1.1",
+    "icon":"/appicons/wanzhuannanyue.png",
+    "imgBg":"/appbg/wzny_bg.png",
+    "url":"http://a.app.qq.com/o/simple.jsp?pkgname=com.dct.wzny",
+    "des": "以南越遗迹为背景,利用考古发掘的南越文物和相关历史研究资料,通过三维数字展现技术,实现对南越古人的生活,文化场景还原展示。使用虚拟现实增强,体现实体效果。"
+  },
+  {
+    "title": "张家港博物馆",
+    "time": "2016-10-26",
+    "version": "3.0",
+    "icon":"/appicons/zjg.png",
+    "imgBg":"/appbg/zjg_bg.png",
+    "url":"http://a.app.qq.com/o/simple.jsp?pkgname=com.zhangjiagang.museum",
+    "des": "本款APP是张家港博物馆的安卓移动客户端。您可以通过本APP浏览张家港博物馆珍贵文物，恢弘的场馆。我们也提供细致的介绍和游览向导，期待天下游客前来参观。"
+  }
+]

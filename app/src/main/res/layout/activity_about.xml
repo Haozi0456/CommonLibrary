@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_about"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+    <com.zwh.common.widget.NormalTitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.zwh.common.widget.NormalTitleBar>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/Size_30"
+        android:src="@drawable/icon_about_logo"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/Size_20"
+        app:srcCompat="@drawable/icon_about_title"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/Size_20"
+        app:srcCompat="@drawable/icon_about_tip"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_16_dp"
+        android:gravity="bottom"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            >
+            <TextView
+                android:drawableLeft="@drawable/icon_about_phone"
+                android:layout_width="wrap_content"
+                android:gravity="center_vertical"
+                android:text="027-59908883"
+                android:drawablePadding="@dimen/margin_4_dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:drawableLeft="@drawable/icon_about_chuanzhen"
+                android:layout_width="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="@dimen/Size_25"
+                android:text="027-59908881"
+                android:drawablePadding="@dimen/margin_4_dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:drawableLeft="@drawable/icon_about_email"
+            android:layout_width="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/margin_15_dp"
+            android:layout_gravity="center_horizontal"
+            android:text="services@cncis.com.cn"
+            android:drawablePadding="@dimen/margin_4_dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_marginTop="@dimen/margin_15_dp"
+            android:drawableLeft="@drawable/icon_about_location"
+            android:layout_width="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_horizontal"
+            android:text="武汉市东湖新技术开发区武大科技园慧业楼七楼"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:layout_marginTop="@dimen/margin_25_dp"
+            android:layout_width="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/main_blue"
+            android:drawablePadding="@dimen/margin_4_dp"
+            android:textSize="@dimen/textSize_x_small"
+            android:text="版权所有 ©2015-2016 数文科技"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</LinearLayout>

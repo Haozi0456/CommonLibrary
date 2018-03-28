@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <!--<com.zwh.common.widget.NormalTitleBar-->
+        <!--android:id="@+id/titleBar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"></com.zwh.common.widget.NormalTitleBar>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/main_color"
+        android:orientation="horizontal">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabSelectedTextColor="@color/white"
+            app:tabBackground="@drawable/theme_background_style"
+            app:tabTextColor="@color/white_alpha_half"
+            app:tabIndicatorColor="@color/white">
+        </android.support.design.widget.TabLayout>
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>

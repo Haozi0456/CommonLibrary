@@ -1,0 +1,79 @@
+[
+  {
+    "title": "博物馆微信平台",
+    "time": "2016-11-09",
+    "des": "针对目前用户参观博物馆时出现的用户排队时间长、参观环境不够安静、参观人数过多对博物馆相关设施造成压力等弊端，博物馆提供微信参观平台，使用户更方便快捷地参观浏览各种类型的珍贵文物藏品，足不出户地查看自己...",
+    "icon": "http://www.cncis.com.cn/admin/upload/show/201509081134363436.jpg",
+    "url": "http://www.cncis.com.cn/businessdetail/20150728020516.html"
+  },
+  {
+    "title": "网上虚拟/全景博物馆系统",
+    "time": "2016-11-06",
+    "des": "针对实体博物馆展陈受到时空的限制、展示内容更换周期长、互动性不强等诸多问题，网上虚拟博物馆平台运用三维激光全景、精细三维复原、虚拟现实、互动娱乐以及航测遥感、GIS、移动终端应用等先进技术，对实体博物馆...",
+    "icon": "http://www.cncis.com.cn/admin/upload/show/201509081134553455.jpg",
+    "url": "http://www.cncis.com.cn/businessdetail/20150708060631.html"
+  },
+  {
+    "title": "博物馆智能导览系统",
+    "time": "2016-09-29",
+    "des": "博物馆智能导览展陈展示是基于GIS技术、WIFI室内定位技术、ibeacon定位技术，观众行为分析技术，结合智能导览设备中所包含的方向感应器、重力感应器、陀螺仪、加速度感应器、GPS等多种传感器，提供针对观众个体的个...",
+    "icon": "http://www.cncis.com.cn/admin/upload/show/201509081135283528.jpg",
+    "url": "http://www.cncis.com.cn/businessdetail/20150810103201.html"
+  },
+  {
+    "title": "数字观众管理系统",
+    "time": "2016-09-28",
+    "des": "数字观众管理系统为博物馆每个观众建立档案记录，收集观众位置、预约、消息订阅、停留时间、藏品偏好、点评、转发等个人行为，结合观众行为分析算法，使博物馆能够准确掌握观众基本信息和行为偏好，更有针对性地开展...",
+    "icon": "http://www.cncis.com.cn/admin/upload/show/20150908113604364.png",
+    "url": "http://www.cncis.com.cn/businessdetail/20150807030500.html"
+  },
+  {
+    "title": "简牍管理研究平台",
+    "time": "2016-09-27",
+    "des": "方案概况针对当前简牍资料获取困难、简牍不易保存、简牍研究进展缓慢、简牍的传播困难等现状，该方案将利用先进的现代信息技术整合现有资源，构建数据集中存储，实现简牍资源的存储与共享、研究与利用.该平台的建立...",
+    "icon": "http://www.cncis.com.cn/admin/upload/show/201509081136303630.png",
+    "url": "http://www.cncis.com.cn/businessdetail/20150824102447.html"
+  },
+  {
+    "title": "文物库房管理系统",
+    "time": "2016-08-27",
+    "des": ">方案概况针对当前各文物库房管理效率低下、家底不清、现状不明、管理不规范以及存在安全隐患等问题，该方案将先进的RFID射频识别、WIFI、网络数据库、云存储等互联网技术集成应用于库房文物信息管理，从藏品的征集鉴...",
+    "icon": "http://www.cncis.com.cn/admin/upload/show/201509081136473647.jpg",
+    "url": "http://www.cncis.com.cn/businessdetail/20150902012406.html"
+  },
+  {
+    "title": "图书信息管理系统",
+    "time": "2016-08-26",
+    "des": "针对实体博物馆、图书馆藏书个性化定制的图书信息管理系统，本方案将改变原有枯燥的文字信息管理模式，提供文字、图片、音视频、文档等多形式图书资料管理，支持。专业应用支持ISBN扫描自动录入——支持互联网检索，...",
+    "icon": "http://www.cncis.com.cn/admin/upload/show/20150908113702372.png",
+    "url": "http://www.cncis.com.cn/businessdetail/20150810105415.html"
+  },
+  {
+    "title": "数字资源管理系统",
+    "time": "2016-08-17",
+    "des": "针对现有博物馆数字化资源分散的弊端，数字化资源管理系统充分整合利用旧软件，使用统一的标准导出旧数据，并进行格式转换，存储至新的数据库，从数据层面逐步整合原有的数字化资源。 该系统将目前博物馆内所有相关...",
+    "icon": "http://www.cncis.com.cn/admin/upload/show/20150910170951951.jpg",
+    "url": "http://www.cncis.com.cn/businessdetail/20150810111314.html"
+  },
+  {
+    "title": "陈列展览管理系统",
+    "time": "2016-07-25",
+    "des": "作为面向博物馆工作人员的管理软件，陈列展览管理系统一方面对陈列展览的展品进行管理，维护展品信息为其他系统所用，同时管理临展相关的数字化资源，对以往临展资料进行追溯和查看，并运用先进的虚拟三维技术为博物...",
+    "icon": "http://www.cncis.com.cn/admin/upload/show/201509081137413741.jpg",
+    "url": "http://www.cncis.com.cn/businessdetail/20150810114008.html"
+  },
+  {
+    "title": "文创产品管理系统",
+    "time": "2016-07-25",
+    "des": "文创产品能够在一定程度上满足社会公众的文化消费需求，在实现把博物馆带回家的同时，它还能增强博物馆的自我造血机能，激发博物馆的内在活力，更好地保障博物馆的生存和可持续发展能力。文创产品管理系统面向文创产...",
+    "icon": "http://www.cncis.com.cn/admin/upload/show/201508101425142514.jpg",
+    "url": "http://www.cncis.com.cn/businessdetail/20150810021906.html"
+  },
+  {
+    "title": "文物修复保护系统",
+    "time": "2016-07-25",
+    "des": "方案概况文物修复技术将中国古代的传统工艺和现代科学技术相结合，针对博物馆中多种多样的文物修护需求提供详细的记录分析平台。文物的修复与复制是一项技术性很强的工作，文物的类别不同，它的修复方法也不同，修复...",
+    "icon": "http://www.cncis.com.cn/admin/upload/show/20150824120115115.png",
+    "url": "http://www.cncis.com.cn/businessdetail/20150824105503.html"
+  }
+]

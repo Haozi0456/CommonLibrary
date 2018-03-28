@@ -1,3 +1,33 @@
 <resources>
-    <string name="app_name">GitHub_CommonLibrary</string>
+    <string name="app_name">数文科技</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="mine">我的</string>
+    <string name="submit">提交</string>
+    <string name="cancel">取消</string>
+    <string name="back">返回</string>
+    <string name="regist">注册</string>
+
+    <string name="forgetpassword"><u>忘记密码?</u></string>
+    <string name="share">分享</string>
+
+    <string name="action_settings">设置</string>
+
+    <string name="photo">图片</string>
+    <!-- 共享过度动画 -->
+    <string name="transition_photos">transition_animation_news_photos</string>
+
+    <string name="introduction1">\t\t\t\t武汉数文科技有限公司是国内领先的数字文化遗产管理整体解决方案提供商和平台运营商，由武汉大学从事文化遗产数字化保护、传播与开发的创新技术团队和武汉海达数云技术有限公司（广州中海达卫星导航技术股份有限公司控股子公司）联合发起设立。公司现有各类管理、技术人才100多人，横跨博物馆、考古、信息技术、遥感与地理信息系统、环境、建筑与规划、艺术设计、教育、旅游等多个学科领域，与湖北省文物局、武汉大学共建湖北省海达文化遗产保护科技研究院，拥有雄厚的科技团队和创新成果支撑，2015年公司入选湖北省文化产业示范基地。
+</string>
+    <string name="introduction2">
+\t\t\t\t数文科技致力于在严谨的科学研究基础上，通过创新的信息化技术来推动文化遗产保护和开发领域的发展与变革，现主要从事覆盖文化遗产数字化保护、研究、展示、传播、开发全产业链的应用系统产品开发与专业技术服务，拥有国家专利、各类软件著作权多项。公司现有主要业务板块包括数字展陈设计与实施、智慧博物馆规划与建设、数字考古整体解决方案提供、数字文化遗产信息平台运营和相关旅游、教育、文创产品开发。</string>
+
+    <string name="testText2">赵客缦胡缨，吴钩霜雪明。银鞍照白马，飒沓如流星。十步杀一人，千里不留行。事了拂衣去，深藏身与名。
+闲过信陵饮，脱剑膝前横。将炙啖朱亥，持觞劝侯嬴。
+三杯吐然诺，五岳倒为轻。眼花耳热后，意气素霓生。
+救赵挥金槌，邯郸先震惊。千秋二壮士，烜赫大梁城。
+纵死侠骨香，不惭世上英。谁能书阁下，白首太玄经。</string>
+
 </resources>

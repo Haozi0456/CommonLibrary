@@ -1,13 +1,22 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'zwh'
+            keyPassword '123456'
+            storeFile file('D:/Development/WorkSpace/androidStudio/key/zwh.jks')
+            storePassword '123456'
+        }
+    }
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.zwh.commonlibrary"
+        applicationId "com.zwh.demo"
         minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -15,14 +24,40 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            signingConfig signingConfigs.config
+        }
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs' //就是你放aar的目录地址
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:design:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    compile 'com.android.support:multidex:1.0.1'
+
+    compile project(':common_library')
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    //底部导航栏
+    compile 'com.ashokvarma.android:bottom-navigation-bar:2.0.2'
+    compile 'com.nineoldandroids:library:2.4.0'
+    //下拉刷新
+    compile 'cn.bingoogolapple:bga-refreshlayout:1.1.8@aar'
+    //列表适配器
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
+    //
+    compile name: 'SMSSDK-2.1.2', ext: 'aar'
+    compile name: 'SMSSDKGUI-2.1.2', ext: 'aar'
 }

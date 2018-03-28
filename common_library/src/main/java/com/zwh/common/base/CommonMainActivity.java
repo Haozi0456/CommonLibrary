@@ -40,7 +40,7 @@
 ////    android:layout_alignParentBottom="true"
 ////    android:layout_gravity="bottom"/>
 //
-//    @BindViewView(R.id.bottomNavigationBar)
+//    @BindViewViewView(R.id.bottomNavigationBar)
 //    BottomNavigationBar bottomNavigationBar;
 //
 //    private Context context;

@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+    >
+
+    <com.zwh.common.widget.NormalTitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.zwh.common.widget.NormalTitleBar>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8_dp"
+        android:gravity="center"
+        android:padding="@dimen/margin_8_dp"
+        android:text="武汉数文科技有限公司"
+        android:textColor="@color/main_color"
+        android:textSize="@dimen/textSize_large"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/Size_200"
+                android:background="@drawable/introduction_bg"
+                android:scaleType="centerInside"
+                />
+
+
+            <TextView
+                android:id="@+id/introductionText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="@dimen/margin_2_dp"
+
+                android:paddingLeft="@dimen/margin_8_dp"
+                android:paddingRight="@dimen/margin_8_dp"
+                android:paddingTop="@dimen/margin_8_dp"
+                android:text="@string/introduction1"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="@dimen/margin_2_dp"
+                android:paddingBottom="@dimen/margin_16_dp"
+                android:paddingLeft="@dimen/margin_8_dp"
+                android:paddingRight="@dimen/margin_8_dp"
+                android:paddingTop="@dimen/margin_3_dp"
+                android:text="@string/introduction2"
+                />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
