@@ -3,7 +3,9 @@ package com.zwh.common.commonActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Parcelable;
+import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Gravity;
@@ -12,17 +14,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
-import com.github.chrisbanes.photoview.OnPhotoTapListener;
-import com.github.chrisbanes.photoview.PhotoView;
 import com.zwh.common.R;
 import com.zwh.common.base.BaseActivity;
 import com.zwh.common.commonAdapter.ViewPagerFixed;
@@ -30,6 +33,8 @@ import com.zwh.common.commonAdapter.ViewPagerFixed;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.co.senab.photoview.PhotoView;
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 
 /**
@@ -178,12 +183,17 @@ public class BigImagePagerActivity extends BaseActivity {
                 final PhotoView imageView = (PhotoView) view.findViewById(R.id.image);
 
                 //单击图片退出
-                imageView.setOnPhotoTapListener(new OnPhotoTapListener() {
+                imageView.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
                     @Override
-                    public void onPhotoTap(ImageView view, float x, float y) {
+                    public void onPhotoTap(View view, float x, float y) {
                         BigImagePagerActivity.this.finish();
                         BigImagePagerActivity.this.overridePendingTransition(R.anim.act_fade_in_center,
                                 R.anim.act_fade_out_center);
+                    }
+
+                    @Override
+                    public void onOutsidePhotoTap() {
+
                     }
                 });
 
@@ -198,24 +208,48 @@ public class BigImagePagerActivity extends BaseActivity {
                 final String imgurl = datas.get(position);
 
                 loading.setVisibility(View.VISIBLE);
-                Glide.with(context).load(imgurl)
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                Glide.with(context).load(imgurl)
+//                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                        .error(R.drawable.ic_empty_picture)
+//                        .thumbnail(0.1f)
+//                        .listener(new RequestListener<String, GlideDrawable>() {
+//                            @Override
+//                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+//                                loading.setVisibility(View.GONE);
+//                                return false;
+//                            }
+//
+//                            @Override
+//                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+//                                loading.setVisibility(View.GONE);
+//                                return false;
+//                            }
+//                        })
+//                        .into(imageView);
+
+                RequestOptions options = new RequestOptions()
+                        .centerCrop()
+//                        .placeholder(R.drawable.placeholder)
                         .error(R.drawable.ic_empty_picture)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL);
+
+                Glide.with(context).load(imgurl)
+                        .apply(options)
                         .thumbnail(0.1f)
-                        .listener(new RequestListener<String, GlideDrawable>() {
+                        .listener(new RequestListener<Drawable>() {
                             @Override
-                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
                                 loading.setVisibility(View.GONE);
                                 return false;
                             }
 
                             @Override
-                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
                                 loading.setVisibility(View.GONE);
                                 return false;
                             }
-                        })
-                        .into(imageView);
+                        }).into(imageView);
+
 
                 container.addView(view, 0);
             }
