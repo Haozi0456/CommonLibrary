@@ -37,7 +37,8 @@ Step 2. Add the dependency
     compile 'com.google.code.gson:gson:2.8.2'
 
     // glide图片加载库
-    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.github.bumptech.glide:glide:4.6.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
     //glide的网路请求插件
     compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
 
@@ -49,6 +50,6 @@ Step 2. Add the dependency
 
     //照片选择 仿微信
     compile('com.lzy.widget:imagepicker:0.6.1') {
-    //exclude module: 'PhotoView'//移除重复的photoview包
+        //exclude module: 'PhotoView'//移除重复的photoview包
         exclude group: 'com.github.chrisbanes.photoview', module: 'library'
     }
