@@ -1,4 +1,5 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name">氢氧</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -34,4 +35,7 @@
 纵死侠骨香，不惭世上英。谁能书阁下，白首太玄经。</string>
     <string name="title_activity_main2">Main2Activity</string>
 
+=======
+    <string name="app_name">GitHub_CommonLibrary</string>
+>>>>>>> parent of dc210e8... 添加示例工程
 </resources>
