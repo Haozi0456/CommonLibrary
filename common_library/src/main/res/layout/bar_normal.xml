@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/common_title"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/abc_action_bar_default_height_material"
-    android:background="@color/main_color"
-    android:minHeight="?attr/actionBarSize"
-    android:orientation="horizontal">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/common_title"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@color/main_color"
+                android:minHeight="48dp"
+                android:orientation="horizontal">
     <!-- 公共的的标题栏 -->
     <TextView
         android:id="@+id/actionBack"
@@ -18,7 +19,7 @@
         android:gravity="center"
         android:padding="8dp"
         android:textColor="@color/white"
-        android:visibility="visible" />
+        android:visibility="visible"/>
 
     <TextView
         android:id="@+id/actionTitle"
@@ -26,7 +27,7 @@
         android:layout_height="fill_parent"
         android:layout_centerInParent="true"
         android:gravity="center_vertical"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"/>
 
     <ImageView
         android:id="@+id/image_right"
@@ -34,7 +35,7 @@
         android:layout_height="fill_parent"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
-        android:padding="5dp" />
+        android:padding="5dp"/>
 
     <TextView
         android:id="@+id/tv_right"
@@ -44,5 +45,5 @@
         android:layout_marginRight="5dp"
         android:gravity="center"
         android:padding="5dp"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"/>
 </RelativeLayout>

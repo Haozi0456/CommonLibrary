@@ -1,6 +1,7 @@
 package com.zwh.demo.ui.personal.fragment;
 
 import android.app.Dialog;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,7 +11,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v4.app.Fragment;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.view.LayoutInflater;
@@ -23,12 +23,14 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.zwh.common.base.BaseAppFragment;
 import com.zwh.demo.R;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,10 +40,9 @@ import butterknife.OnClick;
 import static android.app.Activity.RESULT_OK;
 
 
-public class PersonalFragment extends Fragment implements View.OnClickListener{
+public class PersonalFragment extends BaseAppFragment implements View.OnClickListener{
 
 
-    private Context context;
 
     @BindView(R.id.loginIcon)
     ImageView loginIcon;
@@ -62,21 +63,35 @@ public class PersonalFragment extends Fragment implements View.OnClickListener{
     }
 
 
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        // Inflate the layout for this fragment
+//        View view = inflater.inflate(R.layout.fragment_personal, container, false);
+//        this.context = getActivity().getApplicationContext();
+//        ButterKnife.bind(this, view);
+//        initUI();
+//        return view;
+//    }
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_personal, container, false);
-        this.context = getActivity().getApplicationContext();
-        ButterKnife.bind(this, view);
+    protected int getLayoutId() {
+        return R.layout.fragment_personal;
+    }
+
+    @Override
+    protected void afterCreate(Bundle savedInstanceState) {
+        setTitle("我的");
+        isShowBack(false);
         initUI();
-        return view;
     }
 
     private void initUI() {
+
         RequestOptions options = new RequestOptions()
                 .centerCrop();
+
         //初始化头像
-        Glide.with(context).asBitmap().load(R.drawable.ic_user_default).apply(options).into(new BitmapImageViewTarget(loginIcon) {
+        Glide.with(context).asBitmap().apply(options).load(R.drawable.ic_user_default).into(new BitmapImageViewTarget(loginIcon) {
             @Override
             protected void setResource(Bitmap resource) {
                 RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), resource);

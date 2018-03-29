@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,18 +15,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.zwh.common.tools.glideModule.ImageCatchUtil;
+import com.zwh.common.widget.AlertDialogView;
 import com.zwh.common.widget.NormalTitleBar;
+import com.zwh.common.widget.listener.ChooseOptionCallBack;
 import com.zwh.demo.R;
-import com.zwh.demo.app.GApp;
 import com.zwh.demo.base.BaseActivity;
-import com.zwh.demo.ui.login.bean.UserBean;
-import com.zwh.demo.widget.AlertDialogView;
+import com.zwh.demo.ui.demo.activity.RefreshLayoutDemoActivity;
 
 import java.io.File;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -95,52 +92,23 @@ public class PersonalActivity extends BaseActivity implements View.OnClickListen
 
     private void initUI() {
 
-        titleBar.setTitleText("关于");
+        titleBar.setTitleText(getResources().getString(R.string.mine));
         titleBar.setOnBackListener(this);
 
-        if(GApp.userBean != null){
-            UserBean bean = GApp.userBean;
-            loginName.setText(bean.getNickname());
+        //初始化头像
+        path = context.getExternalFilesDir(null).getPath() + "/head/";
+        String headImgUrl = path + "head.jpg";
 
-            RequestOptions options = new RequestOptions()
-                    .centerCrop();
-
-            //初始化头像
-            Glide.with(context).asBitmap().load(bean.getHeadImgurl()).apply(options).into(new BitmapImageViewTarget(loginIcon) {
-                @Override
-                protected void setResource(Bitmap resource) {
-                    RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), resource);
-                    circularBitmapDrawable.setCircular(true);
-                    loginIcon.setImageDrawable(circularBitmapDrawable);
-                }
-
-                @Override
-                public void onLoadFailed(Drawable errorDrawable) {
-                    super.onLoadFailed(errorDrawable);
-                    Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_user_default);
-                    RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), bitmap);
-                    circularBitmapDrawable.setCircular(true);
-                    loginIcon.setImageDrawable(circularBitmapDrawable);
-                }
-            });
-
-        }else{
-            //初始化头像
-            path = context.getExternalFilesDir(null).getPath() + "/head/";
-            String headImgUrl = path + "head.jpg";
-
-            File file = new File(headImgUrl);
-            Bitmap bitmap = null;
-            if (!file.exists()) {
-                bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_user_default);
-            } else {
-                bitmap = BitmapFactory.decodeFile(headImgUrl);
-            }
-            RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), bitmap);
-            circularBitmapDrawable.setCircular(true);
-            loginIcon.setImageDrawable(circularBitmapDrawable);
+        File file = new File(headImgUrl);
+        Bitmap bitmap = null;
+        if (!file.exists()) {
+            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_user_default);
+        } else {
+            bitmap = BitmapFactory.decodeFile(headImgUrl);
         }
-
+        RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), bitmap);
+        circularBitmapDrawable.setCircular(true);
+        loginIcon.setImageDrawable(circularBitmapDrawable);
 
         //获取缓存大小
         catchUtil = ImageCatchUtil.getInstance(context);
@@ -172,24 +140,22 @@ public class PersonalActivity extends BaseActivity implements View.OnClickListen
             case R.id.actionBack:
                 finish();
                 break;
-//            case R.id.loginIcon: //修改个人资料
-//                Intent intent = new Intent(context, PersonalInfoActivity.class);
-//                startActivityForResult(intent, 1);
-//                break;
+            case R.id.loginIcon:
+                Intent intent = new Intent(context, PersonalInfoActivity.class);
+                startActivityForResult(intent, 1);
+                break;
             case R.id.facoriteView:
-                showMsg("敬请期待!");
                 break;
             case R.id.settingView:
-                showMsg("敬请期待!");
                 break;
             case R.id.aboutView:
-                Intent aboutIntent = new Intent(context, AboutActivity.class);
+                Intent aboutIntent = new Intent(context,RefreshLayoutDemoActivity.class);
                 startActivity(aboutIntent);
                 break;
             case R.id.clearnCacheView: //清除缓存
                 String cacheTip = "当前缓存" + catchUtil.getCacheSize();
                 AlertDialogView dialogView = AlertDialogView.getInstance(context);
-                dialogView.show("清除缓存", cacheTip, "确定清除", "暂不清除", new AlertDialogView.ChooseOptionCallBack() {
+                dialogView.show("清除缓存", cacheTip, "确定清除", "暂不清除", new ChooseOptionCallBack() {
                     @Override
                     public void chooseOption(int type) {
                         if (type == 1) {

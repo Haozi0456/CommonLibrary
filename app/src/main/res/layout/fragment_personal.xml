@@ -5,10 +5,6 @@
               android:clipToPadding="true"
               android:orientation="vertical">
 
-    <com.zwh.common.widget.NormalTitleBar
-        android:id="@+id/titleBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></com.zwh.common.widget.NormalTitleBar>
     <!--<LinearLayout-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="@dimen/Size_48"-->
@@ -101,7 +97,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_10_dp"
-                    android:text="请登录"
+                    android:text="张三"
                     android:textColor="@color/black"
                     android:textSize="@dimen/textSize_small"/>
             </LinearLayout>

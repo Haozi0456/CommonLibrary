@@ -8,8 +8,9 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.zwh.common.app.BaseApplication;
 import com.zwh.demo.R;
-import com.zwh.demo.app.GApp;
+
 import com.zwh.demo.ui.home.bean.InfoBean;
 
 import java.util.List;
@@ -31,22 +32,17 @@ public class InfoListAdapter extends BaseQuickAdapter<InfoBean,BaseViewHolder>{
     protected void convert(BaseViewHolder baseViewHolder, InfoBean bean) {
         baseViewHolder.setText(R.id.titleView, bean.getName());//
         ImageView imageView = baseViewHolder.getView(R.id.contextImage);
-//        Glide.with(GApp.getAppContext()).load(bean.getImgsrc()).placeholder(R.drawable.icon_preload).error(R.drawable.icon_preload).into(imageView);
-//        Glide.with(GApp.getAppContext()).load(bean.getImgurl())
-//                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-//                .placeholder(R.drawable.icon_preload)
-//                .error(R.drawable.icon_preload)
-//                .centerCrop()
-////                .override(1090, 1090*3/4)
-//                .crossFade()
-//                .into(imageView);
-
+//        Glide.with(BaseApplication.getAppContext()).load(bean.getImgsrc()).placeholder(R.drawable.icon_preload).error(R.drawable.icon_preload).into(imageView);
         RequestOptions options = new RequestOptions()
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                 .placeholder(R.drawable.icon_preload)
                 .error(R.drawable.icon_preload)
                 .centerCrop();
-        Glide.with(GApp.getAppContext()).load(bean.getImgurl()).apply(options).transition(DrawableTransitionOptions.withCrossFade()).into(imageView);
+        Glide.with(BaseApplication.getAppContext()).load(bean.getImgurl())
+                .apply(options)
+//                .override(1090, 1090*3/4)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(imageView);
     }
 
 

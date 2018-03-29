@@ -12,11 +12,11 @@
 //import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 //import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 //import com.zwh.common.R;
-//import com.zwh.xxx.ui.home.fragment.InfoFragment;
-//import com.zwh.xxx.ui.map.fragment.MapFragment;
-//import com.zwh.xxx.ui.message.fragment.MessageFragment;
-//import com.zwh.xxx.ui.personal.activity.PersonalActivity;
-//import com.zwh.xxx.ui.personal.fragment.PersonalFragment;
+//import com.zwh.demo.ui.home.fragment.InfoFragment;
+//import com.zwh.demo.ui.map.fragment.MapFragment;
+//import com.zwh.demo.ui.message.fragment.MessageFragment;
+//import com.zwh.demo.ui.personal.activity.PersonalActivity;
+//import com.zwh.demo.ui.personal.fragment.PersonalFragment;
 //
 //
 //import butterknife.ButterKnife;
@@ -40,7 +40,7 @@
 ////    android:layout_alignParentBottom="true"
 ////    android:layout_gravity="bottom"/>
 //
-//    @BindViewViewView(R.id.bottomNavigationBar)
+//    @BindViewViewViewView(R.id.bottomNavigationBar)
 //    BottomNavigationBar bottomNavigationBar;
 //
 //    private Context context;

@@ -3,66 +3,84 @@
               android:layout_height="match_parent"
               android:orientation="vertical"
     >
+    <!--<com.zwh.common.widget.NormalTitleBar-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
 
-    <com.zwh.common.widget.NormalTitleBar
-        android:id="@+id/titleBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></com.zwh.common.widget.NormalTitleBar>
+    <!--</com.zwh.common.widget.NormalTitleBar>-->
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_8_dp"
-        android:gravity="center"
-        android:padding="@dimen/margin_8_dp"
-        android:text="武汉数文科技有限公司"
-        android:textColor="@color/main_color"
-        android:textSize="@dimen/textSize_large"
-        />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        android:fillViewport="true">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/Size_200"
-                android:background="@drawable/introduction_bg"
-                android:scaleType="centerInside"
-                />
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/Size_48"-->
+        <!--android:background="@drawable/title_bar_bg"-->
+        <!--android:orientation="vertical">-->
 
 
-            <TextView
-                android:id="@+id/introductionText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="@dimen/margin_2_dp"
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--&gt;-->
 
-                android:paddingLeft="@dimen/margin_8_dp"
-                android:paddingRight="@dimen/margin_8_dp"
-                android:paddingTop="@dimen/margin_8_dp"
-                android:text="@string/introduction1"
-                />
+            <!--<LinearLayout-->
+                <!--android:id="@+id/backButton"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:background="@drawable/click_background_style"-->
+                <!--android:gravity="center_vertical|center_horizontal"-->
+                <!--android:minWidth="@dimen/Size_48"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:paddingLeft="5dp"-->
+                <!--android:paddingRight="5dp"-->
+                <!--android:visibility="gone">-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="@dimen/margin_2_dp"
-                android:paddingBottom="@dimen/margin_16_dp"
-                android:paddingLeft="@dimen/margin_8_dp"
-                android:paddingRight="@dimen/margin_8_dp"
-                android:paddingTop="@dimen/margin_3_dp"
-                android:text="@string/introduction2"
-                />
-        </LinearLayout>
-    </ScrollView>
 
+                <!--<TextView-->
+                    <!--android:id="@+id/backText"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:drawableLeft="@drawable/back_icon"-->
+                    <!--android:drawablePadding="@dimen/margin_5_dp"-->
+                    <!--android:text="返回"-->
+                    <!--android:textSize="@dimen/textSize_small"/>-->
+            <!--</LinearLayout>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/actionTitle"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:text="文化遗址"-->
+                <!--android:textSize="@dimen/textSize_middle"/>-->
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/actionButton"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:gravity="center_vertical|center_horizontal"-->
+                <!--android:minWidth="@dimen/Size_48"-->
+                <!--android:orientation="horizontal"-->
+                <!--&gt;-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/actionText"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textSize="@dimen/textSize_small"/>-->
+            <!--</LinearLayout>-->
+        <!--</RelativeLayout>-->
+    <!--</LinearLayout>-->
+
+    <android.support.v4.widget.SwipeRefreshLayout
+         android:id="@+id/refreshLayout"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+
+         <android.support.v7.widget.RecyclerView
+             android:id="@+id/recyclerView"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"/>
+     </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

@@ -7,9 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.zwh.demo.MainActivity;
 import com.zwh.demo.R;
 import com.zwh.demo.ui.login.activity.LoginActivity;
-
 
 /**
  * @Description:  启动界面
@@ -33,7 +33,7 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-                Intent mainIntemt = new Intent(SplashActivity.this,LoginActivity.class);
+                Intent mainIntemt = new Intent(SplashActivity.this,MainActivity.class);
                 SplashActivity.this.startActivity(mainIntemt);
                 SplashActivity.this.finish();
                 //实现淡入浅出的效果

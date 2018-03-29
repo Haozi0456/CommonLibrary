@@ -1,86 +1,111 @@
 package com.zwh.demo;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-import com.zwh.demo.ui.business.fragement.BusinessMainFragment;
+import com.ashokvarma.bottomnavigation.TextBadgeItem;
+import com.blankj.utilcode.util.ToastUtils;
+import com.zwh.common.utils.CustomViewPager;
+import com.zwh.demo.ui.demo.fragment.DemoListFragment;
 import com.zwh.demo.ui.home.fragment.HomeFragment;
-import com.zwh.demo.ui.message.fragment.NewsFragment;
-import com.zwh.demo.ui.personal.activity.PersonalActivity;
+import com.zwh.demo.ui.message.fragment.MessageFragment;
 import com.zwh.demo.ui.personal.fragment.PersonalFragment;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+//import com.zwh.demo.ui.map.fragment.MapFragment;
+
 /**
- * @Description: 主界面
  * @author Zhaohao
+ * @Description: 主界面
  * @Date 2016/12/05 15:19
  */
-public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener{
+public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener {
 
+    @BindView(R.id.viewPager)
+    CustomViewPager viewPager;
     @BindView(R.id.bottomNavigationBar)
     BottomNavigationBar bottomNavigationBar;
 
-    private Context context;
-
-    /**
-     * 用于对Fragment进行管理
-     */
-    private FragmentManager fragmentManager;
+    private List<Fragment> mFragments;
 
     private HomeFragment homeFragment;
-//    private MapFragment mapFragment;
-    private NewsFragment newsFragment;
+    private MessageFragment messageFragment;
+    private DemoListFragment demoListFragment;
     private PersonalFragment personalFragment;
-    private BusinessMainFragment productFragment;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        this.context = this;
-        initBottomBar();
-        initFragment();
 
-        copyAsstes();
+        initView();
     }
 
-    private void copyAsstes() {
-
-
-        new Thread(new Runnable() {
+    public void initView() {
+        initBottomBar();
+        initFragment();
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void run() {
-                File file = new File(context.getExternalFilesDir(null).getPath() + "/appicons/");
-                if(!file.exists()){
-                    file.mkdirs();
-                }
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-                CopyAssets(context,"appicons",file.getPath());
             }
-        }).start();
+
+            @Override
+            public void onPageSelected(int position) {
+                bottomNavigationBar.selectTab(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                return mFragments.get(position);
+            }
+
+            @Override
+            public int getCount() {
+                return mFragments.size();
+            }
+        });
+
+        viewPager.setOffscreenPageLimit(5);
+        viewPager.setScroll(false);
     }
 
     private void initFragment() {
-        fragmentManager = getSupportFragmentManager();
-        // 第一次启动时选中第0个tab
-        setTabSelection(0);
+        mFragments = new ArrayList<>();
+        homeFragment = new HomeFragment();
+        messageFragment = new MessageFragment();
+
+        personalFragment = new PersonalFragment();
+        demoListFragment = new DemoListFragment();
+        mFragments.add(homeFragment);
+        mFragments.add(demoListFragment);
+        mFragments.add(messageFragment);
+        mFragments.add(personalFragment);
+
+
     }
+
 
     private void initBottomBar() {
 
@@ -89,120 +114,26 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
         bottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
 
-//        bottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_RIPPLE);
+//        TextBadgeItem numberBadgeItem2 = new TextBadgeItem();
+//        ShapeBadgeItem shapeBadgeItem = new ShapeBadgeItem();
+//        shapeBadgeItem.setShape(ShapeBadgeItem.SHAPE_HEART);
+//        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.nav_map, "地图").setActiveColorResource(R.color.main_color).setBadgeItem(numberBadgeItem));
+        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.smartbar_home_sele, "首页").setActiveColorResource(R.color.main_color));
+        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.smartbar_cate_sele, "示例").setActiveColorResource(R.color.main_color));
+        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.pictures_sele, "美图").setActiveColorResource(R.color.main_color));
+        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.smartbar_my_sele, "我的").setActiveColorResource(R.color.main_color));
 
-        bottomNavigationBar
-                .addItem(new BottomNavigationItem(R.drawable.smartbar_home_sele, "简介")).setActiveColor(R.color.main_color)
-                .addItem(new BottomNavigationItem(R.drawable.smartbar_cate_sele, "产品")).setActiveColor(R.color.main_color)
-                .addItem(new BottomNavigationItem(R.drawable.icon_news_trends, "动态")).setActiveColor(R.color.main_color)
-                .addItem(new BottomNavigationItem(R.drawable.smartbar_my_sele, "关于")).setActiveColor(R.color.main_color)
-                .initialise();
+
+        bottomNavigationBar.setFirstSelectedPosition(0).initialise();
 
         bottomNavigationBar.setTabSelectedListener(this);
     }
 
 
-    /* 根据传入的index参数来设置选中的tab页。
-            *
-            * @param index
-    *
-            */
-    private void setTabSelection(int index) {
-        // 开启一个Fragment事务
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-
-
-        // 先隐藏掉所有的Fragment，以防止有多个Fragment显示在界面上的情况
-        hideFragments(transaction);
-        //自定义动画
-//        transaction.setCustomAnimations(
-//         R.animator.fragment_slide_left_enter,
-//         R.animator.fragment_slide_left_exit,
-//         R.animator.fragment_slide_right_enter,
-//         R.animator.fragment_slide_right_exit);
-        switch (index) {
-            case 0:
-                if ( homeFragment== null) {
-                    homeFragment = new HomeFragment();
-                    // 加入到BackStack中
-                    transaction.add(R.id.content, homeFragment);
-//                    transaction.addToBackStack(null);
-                } else {
-                    transaction.show(homeFragment);
-                }
-                break;
-//            case 1:
-//                if (mapFragment == null) {
-//                    mapFragment = new MapFragment();
-//                    transaction.add(com.dct.dct.R.id.content, mapFragment);
-////                    transaction.addToBackStack(null);
-//                } else {
-//                    transaction.show(mapFragment);
-//                }
-//                break;
-            case 1:
-                if (productFragment == null) {
-                    productFragment = new BusinessMainFragment();
-                    transaction.add(R.id.content, productFragment);
-//                    transaction.addToBackStack(null);
-                } else {
-                    transaction.show(productFragment);
-                }
-                break;
-            case 2:
-                if (newsFragment == null) {
-                    newsFragment = new NewsFragment();
-                    transaction.add(R.id.content, newsFragment);
-//                    transaction.addToBackStack(null);
-                } else {
-                    transaction.show(newsFragment);
-                }
-                break;
-            case 3:
-//                if (personalFragment == null) {
-//                    personalFragment = new PersonalFragment();
-//                    transaction.add(R.id.content, personalFragment);
-////                    transaction.addToBackStack(null);
-//                } else {
-//                    transaction.show(personalFragment);
-//                }
-                Intent personalIntent = new Intent(this, PersonalActivity.class);
-                startActivityForResult(personalIntent,index);
-                break;
-        }
-
-
-        transaction.commit();
-    }
-
-    /**
-     * 将所有的Fragment都置为隐藏状态。
-     *
-     * @param transaction
-     *            用于对Fragment执行操作的事务
-     */
-    private void hideFragments(FragmentTransaction transaction) {
-        if (homeFragment != null&&homeFragment.isVisible()) {
-            transaction.hide(homeFragment);
-//            homeFragment =null;
-        }
-        if (productFragment != null&&productFragment.isVisible()) {
-            transaction.hide(productFragment);
-//            mapFragment = null;
-        }
-        if (newsFragment != null&& newsFragment.isVisible()) {
-            transaction.hide(newsFragment);
-//            messageFragment = null;
-        }
-        if (personalFragment != null&& personalFragment.isVisible()) {
-            transaction.hide(personalFragment);
-//            personalFragment = null;
-        }
-    }
 
     @Override
     public void onTabSelected(int position) {
-        setTabSelection(position);
+        viewPager.setCurrentItem(position);
     }
 
     @Override
@@ -215,77 +146,39 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
     }
 
+    private class MyAdapter extends FragmentPagerAdapter {
+        MyAdapter(android.support.v4.app.FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragments.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragments.size();
+        }
+    }
 
     private long exitTime = 0;
+
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)
-    {
-        if (keyCode == KeyEvent.KEYCODE_BACK )
-        {
-            if((System.currentTimeMillis() - exitTime) > 2000)
-            {
-                Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if ((System.currentTimeMillis() - exitTime) > 2000) {
+                ToastUtils.showShort("再按一次退出程序", Toast.LENGTH_SHORT);
                 exitTime = System.currentTimeMillis();
-            }
-            else
-            {
+            } else {
                 android.os.Process.killProcess(android.os.Process.myPid());
                 finish();
-//                System.exit(0);
             }
         }
         return false;
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode){
-            case 0:
 
-                break;
-            case 1:
-                break;
-            case 2:
-
-                break;
-            case 3:
-                bottomNavigationBar.selectTab(0);
-                break;
-        }
-    }
-
-
-    /**
-     * 复制asset文件到指定目录
-     * @param oldPath  asset下的路径
-     * @param newPath  SD卡下保存路径
-     */
-    public static void CopyAssets(Context context, String oldPath, String newPath) {
-        try {
-            String fileNames[] = context.getAssets().list(oldPath);// 获取assets目录下的所有文件及目录名
-            if (fileNames.length > 0) {// 如果是目录
-                File file = new File(newPath);
-                file.mkdirs();// 如果文件夹不存在，则递归
-                for (String fileName : fileNames) {
-                    CopyAssets(context, oldPath + "/" + fileName, newPath + "/" + fileName);
-                }
-            } else {// 如果是文件
-                InputStream is = context.getAssets().open(oldPath);
-                FileOutputStream fos = new FileOutputStream(new File(newPath));
-                byte[] buffer = new byte[1024];
-                int byteCount = 0;
-                while ((byteCount = is.read(buffer)) != -1) {// 循环从输入流读取
-                    // buffer字节
-                    fos.write(buffer, 0, byteCount);// 将读取的输入流写入到输出流
-                }
-                fos.flush();// 刷新缓冲区
-                is.close();
-                fos.close();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
 }
+

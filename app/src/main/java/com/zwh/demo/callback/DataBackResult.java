@@ -12,10 +12,10 @@ import java.io.Serializable;
 
 public class DataBackResult<T> implements Serializable{
 
-    public int code; //状态码
-    public String msg; // 状态信息
+//    public int code; //状态码
+    public String error; // 状态信息
 
-    public T data;
+    public T results;
 
 
 

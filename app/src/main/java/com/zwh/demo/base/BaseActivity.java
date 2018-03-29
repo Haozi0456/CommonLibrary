@@ -115,17 +115,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         return typedValue.data;
     }
 
-    /**
-     * 初始化自定义 tActionBar
-     */
-    public View actionButton;
 
-    public View backButton;
-    public TextView backText;
-    public ImageView backIcon;
-    public TextView actionText;
-    public ImageView actionIcon;
-    public TextView actionTitle;
 
 
 

@@ -8,13 +8,13 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.zwh.common.app.BaseApplication;
 import com.zwh.demo.R;
-import com.zwh.demo.app.GApp;
+
 import com.zwh.demo.ui.home.bean.CommentBean;
 
 import java.util.List;
@@ -39,32 +39,32 @@ public class CommentListAdapter extends BaseQuickAdapter<CommentBean,BaseViewHol
                 .setText(R.id.conextTextView, bean.conext)//
                 .setText(R.id.dateTextView, bean.dateTime);//
         final ImageView imageView = baseViewHolder.getView(R.id.headImg);
-//        Glide.with(GApp.getAppContext()).load(bean.headUrl)
+//        Glide.with(BaseApplication.getAppContext()).load(bean.headUrl)
 //                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
 //                .placeholder(R.drawable.ic_user_default)
 //                .error(R.drawable.ic_user_default)
 //                .centerCrop()
 //                .crossFade()
 //                .into(imageView);
-
-        Glide.with(GApp.getAppContext()).asBitmap().load(bean.headUrl).into(new BitmapImageViewTarget(imageView) {
+        RequestOptions options = new RequestOptions()
+                .centerCrop();
+        Glide.with(BaseApplication.getAppContext()).asBitmap().load(bean.headUrl).apply(options).into(new BitmapImageViewTarget(imageView) {
             @Override
             protected void setResource(Bitmap resource) {
-                RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(GApp.getAppContext().getResources(), resource);
+                RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(BaseApplication.getAppContext().getResources(), resource);
                 circularBitmapDrawable.setCircular(true);
                 imageView.setImageDrawable(circularBitmapDrawable);
             }
 
             @Override
-            public void onLoadFailed(Drawable errorDrawable) {
+            public void onLoadFailed( Drawable errorDrawable) {
                 super.onLoadFailed(errorDrawable);
-                Bitmap bitmap = BitmapFactory.decodeResource(GApp.getAppContext().getResources(), R.drawable.ic_user_default);
-                RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(GApp.getAppContext().getResources(), bitmap);
+                Bitmap bitmap = BitmapFactory.decodeResource(BaseApplication.getAppContext().getResources(), R.drawable.ic_user_default);
+                RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(BaseApplication.getAppContext().getResources(), bitmap);
                 circularBitmapDrawable.setCircular(true);
                 imageView.setImageDrawable(circularBitmapDrawable);
             }
         });
-
 
     }
 

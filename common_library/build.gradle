@@ -3,11 +3,12 @@ apply plugin: 'com.github.dcendents.android-maven'
 
 android {
 
-    compileSdkVersion 26
+    compileSdkVersion 27
+    buildToolsVersion '27.0.0'
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
     }
@@ -29,8 +30,22 @@ android {
 
 
 dependencies {
-    implementation 'com.android.support:recyclerview-v7:26.1.0'
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    testCompile 'junit:junit:4.12'
+//    compile 'com.android.support:support-v4:26.1.0'
+//    compile 'com.android.support:support-v13:26.1.0'
+//    compile 'com.android.support:recyclerview-v7:26.1.0'
+//    compile 'com.android.support:appcompat-v7:26.1.0'
+//    compile 'com.android.support:design:26.1.0'
+
+    compile 'com.android.support:support-v4:27.0.0'
+    compile 'com.android.support:appcompat-v7:27.0.0'
+    compile 'com.android.support:recyclerview-v7:27.0.0'
+    compile 'com.android.support:design:27.0.0'
 
     //绑定注解，专业解决各种findViewById 此库必须写到app的bulider.gradle里,不然无效
     compile 'com.jakewharton:butterknife:8.4.0'

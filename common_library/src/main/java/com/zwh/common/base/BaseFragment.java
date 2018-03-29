@@ -66,7 +66,7 @@ public abstract  class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (rootView == null)
             rootView = inflater.inflate(getLayoutResource(), container, false);
-        this.context = getContext();
+        this.context = getActivity();
         ButterKnife.bind(this, rootView);
         initPresenter();
         initView();

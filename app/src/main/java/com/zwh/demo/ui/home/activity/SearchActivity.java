@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import com.zwh.demo.R;
 
-
 /**
  * @Description: 搜索页面
  * @author Zhaohao

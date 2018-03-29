@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,20 +16,14 @@ import com.zwh.common.widget.ClearnEditText;
 import com.zwh.common.widget.PasswordEditText;
 import com.zwh.demo.MainActivity;
 import com.zwh.demo.R;
-import com.zwh.demo.app.GApp;
-import com.zwh.demo.ui.login.bean.UserBean;
 
 import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.sharesdk.framework.Platform;
-import cn.sharesdk.framework.PlatformActionListener;
-import cn.sharesdk.framework.ShareSDK;
-import cn.sharesdk.onekeyshare.OneKeyShareCallBack;
-import cn.sharesdk.onekeyshare.OnekeyShare;
-import cn.sharesdk.tencent.qq.QQ;
+import okhttp3.internal.platform.Platform;
+
 
 /**
  * @author Zhaohao
@@ -39,8 +32,8 @@ import cn.sharesdk.tencent.qq.QQ;
  */
 public class LoginActivity extends AppCompatActivity {
 
-    @BindView(R.id.loginLogoImg)
-    ImageView loginLogoImg;
+    /*@BindView(R.id.loginLogoImg)
+    ImageView loginLogoImg;*/
     @BindView(R.id.userNameText)
     ClearnEditText userNameText;
     @BindView(R.id.passwordText)
@@ -68,8 +61,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        ButterKnife.bind(this);
         this.context = this;
+        ButterKnife.bind(this);
         handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -82,12 +75,6 @@ public class LoginActivity extends AppCompatActivity {
                         break;
                     case 2:
                         showMsg("取消!");
-                        break;
-                    case 3:
-                        showMsg("登录成功!");
-                        Intent intent = new Intent(context, MainActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK); //退出防止重启
-                        startActivity(intent);
                         break;
                 }
             }
@@ -124,18 +111,16 @@ public class LoginActivity extends AppCompatActivity {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK); //退出防止重启
                 startActivity(intent);
                 break;
-            case R.id.loginQQ:
-//                showShare();
-                loginThirdMethod(QQ.NAME);
-                break;
-            case R.id.loginWX:
-                showMsg("暂不支持!");
+//            case R.id.loginQQ:
+////                showShare();
+//                loginThirdMethod(QQ.NAME);
+//                break;
+//            case R.id.loginWX:
 //                loginThirdMethod(Wechat.NAME);
-                break;
-            case R.id.loginWB:
-                showMsg("暂不支持!");
+//                break;
+//            case R.id.loginWB:
 //                loginThirdMethod(SinaWeibo.NAME);
-                break;
+//                break;
             case R.id.forgetButton:
                 break;
             case R.id.registButton:
@@ -146,83 +131,69 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    private void loginThirdMethod(final String type) {
-        ShareSDK.initSDK(this);
-        final Platform weibo = ShareSDK.getPlatform(type);
-//        weibo.SSOSetting(false);
-//回调信息，可以在这里获取基本的授权返回的信息，但是注意如果做提示和UI操作要传到主线程handler里去执行
-        weibo.setPlatformActionListener(new PlatformActionListener() {
-
-            @Override
-            public void onError(Platform arg0, int arg1, Throwable arg2) {
-                // TODO Auto-generated method stub
-                arg2.printStackTrace();
-            }
-
-            @Override
-            public void onComplete(Platform platform, int action, HashMap<String, Object> arg2) {
-                // TODO Auto-generated method stub
-                //输出所有授权信息
-               String data =  platform.getDb().exportData();
-                String userId = platform.getDb().getUserId();
-                if(type == QQ.NAME && action == Platform.ACTION_USER_INFOR){
-
-                }else if(type == QQ.NAME && action == Platform.ACTION_AUTHORIZING){
-                    UserBean bean = new UserBean();
-                    bean.setNickname(platform.getDb().getUserName());
-                    bean.setHeadImgurl(platform.getDb().getUserIcon());
-                    bean.setGender(platform.getDb().getUserGender());
-                    GApp.userBean = bean;
-                    handler.sendEmptyMessage(3);
-                }
-            }
-
-            @Override
-            public void onCancel(Platform arg0, int arg1) {
-                // TODO Auto-generated method stub
-
-            }
-        });
-        //关闭SSO授权
-        weibo.SSOSetting(false);
-        //authorize与showUser单独调用一个即可
-        weibo.authorize();//单独授权,OnComplete返回的hashmap是空的
+//    private void loginThirdMethod(String type) {
+//        ShareSDK.initSDK(this);
+//        Platform weibo = ShareSDK.getPlatform(type);
+////回调信息，可以在这里获取基本的授权返回的信息，但是注意如果做提示和UI操作要传到主线程handler里去执行
+//        weibo.setPlatformActionListener(new PlatformActionListener() {
+//
+//            @Override
+//            public void onError(Platform arg0, int arg1, Throwable arg2) {
+//                // TODO Auto-generated method stub
+//                arg2.printStackTrace();
+//            }
+//
+//            @Override
+//            public void onComplete(Platform arg0, int arg1, HashMap<String, Object> arg2) {
+//                // TODO Auto-generated method stub
+//                //输出所有授权信息
+//                arg0.getDb().exportData();
+//            }
+//
+//            @Override
+//            public void onCancel(Platform arg0, int arg1) {
+//                // TODO Auto-generated method stub
+//
+//            }
+//        });
+//        //authorize与showUser单独调用一个即可
+//        weibo.authorize();//单独授权,OnComplete返回的hashmap是空的
 //        weibo.showUser(null);//授权并获取用户信息
-        //移除授权
-        //weibo.removeAccount(true);
-    }
+//        //移除授权
+//        //weibo.removeAccount(true);
+//    }
 
 
-    private void showShare() {
-        ShareSDK.initSDK(this);
-        OnekeyShare oks = new OnekeyShare();
-        //关闭sso授权
-        oks.disableSSOWhenAuthorize();
-
-        // 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
-        //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
-        // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
-        oks.setTitle(getString(R.string.share));
-        // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
-        oks.setTitleUrl("http://sharesdk.cn");
-        // text是分享文本，所有平台都需要这个字段
-        oks.setText("我是分享文本");
-        // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
-        oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
-        // url仅在微信（包括好友和朋友圈）中使用
-        oks.setUrl("http://sharesdk.cn");
-        // comment是我对这条分享的评论，仅在人人网和QQ空间使用
-        oks.setComment("我是测试评论文本");
-        // site是分享此内容的网站名称，仅在QQ空间使用
-        oks.setSite(getString(R.string.app_name));
-        // siteUrl是分享此内容的网站地址，仅在QQ空间使用
-        oks.setSiteUrl("http://sharesdk.cn");
-
-        oks.setCallback(new OneKeyShareCallBack(handler));
-
-        // 启动分享GUI
-        oks.show(this);
-    }
+//    private void showShare() {
+//        ShareSDK.initSDK(this);
+//        OnekeyShare oks = new OnekeyShare();
+//        //关闭sso授权
+//        oks.disableSSOWhenAuthorize();
+//
+//        // 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
+//        //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
+//        // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
+//        oks.setTitle(getString(R.string.share));
+//        // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
+//        oks.setTitleUrl("http://sharesdk.cn");
+//        // text是分享文本，所有平台都需要这个字段
+//        oks.setText("我是分享文本");
+//        // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
+//        oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
+//        // url仅在微信（包括好友和朋友圈）中使用
+//        oks.setUrl("http://sharesdk.cn");
+//        // comment是我对这条分享的评论，仅在人人网和QQ空间使用
+//        oks.setComment("我是测试评论文本");
+//        // site是分享此内容的网站名称，仅在QQ空间使用
+//        oks.setSite(getString(R.string.app_name));
+//        // siteUrl是分享此内容的网站地址，仅在QQ空间使用
+//        oks.setSiteUrl("http://sharesdk.cn");
+//
+//        oks.setCallback(new OneKeyShareCallBack(handler));
+//
+//        // 启动分享GUI
+//        oks.show(this);
+//    }
 
     public void showMsg(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();

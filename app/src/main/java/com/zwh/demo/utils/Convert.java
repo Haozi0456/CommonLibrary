@@ -18,7 +18,7 @@ import java.lang.reflect.Type;
 public class Convert {
 
     private static Gson create() {
-        return GsonHolder.gson;
+        return Convert.GsonHolder.gson;
     }
 
     private static class GsonHolder {

@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -32,11 +33,17 @@ public class NormalTitleBar extends RelativeLayout {
         this.context = context;
     }
 
+    public NormalTitleBar(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs);
+    }
+
     public NormalTitleBar(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
         View.inflate(context, R.layout.bar_normal, this);
+
         actionBack = (TextView) findViewById(R.id.actionBack);
+
         actionTitle = (TextView) findViewById(R.id.actionTitle);
         tvRight = (TextView) findViewById(R.id.tv_right);
         ivRight = (ImageView) findViewById(R.id.image_right);
