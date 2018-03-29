@@ -2,19 +2,15 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_green_dao_test"
     android:layout_width="match_parent"
-    style="@style/immersion_status"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <com.zwh.common.widget.NormalTitleBar
         android:id="@+id/titleBar"
-        app:titleText="关于我们"
-        app:textSize="@dimen/textSize_large"
-        app:textColor="@color/black"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </com.zwh.common.widget.NormalTitleBar>
+        android:layout_height="wrap_content"
+        app:titleText="GreenDao使用"/>
 
 </LinearLayout>

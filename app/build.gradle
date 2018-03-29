@@ -1,15 +1,9 @@
-apply plugin: 'com.android.application'
+﻿apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-        config {
-            keyAlias 'zwh'
-            keyPassword '123456'
-            storeFile file('D:/Development/WorkSpace/androidStudio/key/zwh.jks')
-            storePassword '123456'
-        }
-    }
+
     compileSdkVersion 26
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.zwh.demo"
         minSdkVersion 19
@@ -24,15 +18,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        debug {
-            signingConfig signingConfigs.config
-        }
-    }
-}
 
-repositories {
-    flatDir {
-        dirs 'libs' //就是你放aar的目录地址
     }
 }
 
@@ -40,14 +26,13 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
     compile 'com.android.support:design:26.1.0'
+
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
     compile 'com.android.support:multidex:1.0.1'
 
     compile project(':common_library')
+
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     //底部导航栏
@@ -58,6 +43,14 @@ dependencies {
     //列表适配器
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
     //
-    compile name: 'SMSSDK-2.1.2', ext: 'aar'
-    compile name: 'SMSSDKGUI-2.1.2', ext: 'aar'
+
+    //greenDao
+//    compile 'org.greenrobot:greendao:3.2.0'
+//    compile'org.greenrobot:greendao-generator:3.0.0'
 }
+
+//greendao {
+//    schemaVersion 1
+//    daoPackage 'com.zwh.demo.greendao' //greenDao的Dao类生成路径,构建自动生成
+//    targetGenDir 'src/main/java'
+//}

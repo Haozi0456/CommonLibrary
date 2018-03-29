@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/main_color</color>
-    <color name="colorPrimaryDark">@color/main_color</color>
-    <color name="colorAccent">#FF4081</color>
+
 
 
 
@@ -32,7 +30,6 @@
 
     <color name="text_light">@android:color/white</color>
     <color name="text_dark">#616161</color>
-    <color name="text_light_black">#222222</color>
 
 
     <!--白天主题-->
@@ -46,9 +43,8 @@
     <color name="night_two_text_color">#8A9599</color>
     <color name="night_there_text_color">#8A9599</color>
     <!-- app主色调-->
-    <color name="main_color">#03a9f4</color>
-    <color name="main_focus_color">#039be5</color>
-    <color name="main_focus_ripple_color">#50D4FA</color>
+    <color name="main_color">#ff6f00</color>
+    <color name="main_focus_color">#ff4f00</color>
     <color name="orange">#FA8C20</color>
     <color name="wheel_divider_line_color">#FF000000</color>
     <color name="wheel_item_text_color_selected">#FF0288ce</color>

@@ -38,7 +38,6 @@
     </style>
 
 
-
     <!-- toolbar菜单弹出 样式 -->
     <style name="ToolbarPopupTheme" parent="@style/ThemeOverlay.AppCompat.Light">
         <!--<item name="android:colorBackground">#000000</item> 也可以设置背景色以及menu中的其他属性-->
@@ -50,12 +49,21 @@
     </style>
     <!-- toolbar菜单弹出 样式 -->
 
+    <style name="immersion_status">
+        <item name="android:clipToPadding">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-
-
 
 </resources>

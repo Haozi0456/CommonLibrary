@@ -3,7 +3,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context="com.dct.dct.ui.map.fragment.MapFragment">
+                tools:context="com.zwh.xxx.ui.demo.fragment.MapFragment">
 
     <com.zwh.common.widget.SearchTitleBar
         android:id="@+id/searchBar"

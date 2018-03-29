@@ -82,7 +82,7 @@
             android:background="@drawable/login_button_style"
             android:minHeight="0dp"
             android:text="登    录"
-            android:textColor="@color/white"
+            android:textColor="@color/e0"
             android:textSize="@dimen/textSize_middle"/>
 
         <RelativeLayout
