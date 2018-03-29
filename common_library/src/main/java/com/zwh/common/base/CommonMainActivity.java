@@ -40,7 +40,19 @@
 ////    android:layout_alignParentBottom="true"
 ////    android:layout_gravity="bottom"/>
 //
+<<<<<<< HEAD
 //    @BindViewViewViewView(R.id.bottomNavigationBar)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+//    @BindViewViewViewViewView(R.id.bottomNavigationBar)
+=======
+//    @BindViewView(R.id.bottomNavigationBar)
+>>>>>>> parent of dc210e8... 添加示例工程
+=======
+//    @BindViewView(R.id.bottomNavigationBar)
+>>>>>>> parent of dc210e8... 添加示例工程
+>>>>>>> 60d9bddb2cc9ed6858227f99075e671fa73dc08f
 //    BottomNavigationBar bottomNavigationBar;
 //
 //    private Context context;
