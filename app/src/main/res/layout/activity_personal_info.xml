@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_personal_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/Size_48"-->
+        <!--android:background="@drawable/title_bar_bg"-->
+        <!--android:orientation="vertical">-->
+
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--&gt;-->
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/backButton"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:background="@drawable/click_background_style"-->
+                <!--android:gravity="center_vertical|center_horizontal"-->
+                <!--android:minWidth="@dimen/Size_48"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:paddingLeft="5dp"-->
+                <!--android:paddingRight="5dp">-->
+
+
+                <!--<TextView-->
+                    <!--android:id="@+id/backText"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:drawableLeft="@drawable/back_icon"-->
+                    <!--android:drawablePadding="@dimen/margin_5_dp"-->
+                    <!--android:text="返回"-->
+                    <!--android:textSize="@dimen/textSize_small"/>-->
+            <!--</LinearLayout>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/actionTitle"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:text="编辑个人资料"-->
+                <!--android:textSize="@dimen/textSize_middle"/>-->
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/actionButton"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:gravity="center_vertical|center_horizontal"-->
+                <!--android:minWidth="@dimen/Size_48"-->
+                <!--android:orientation="horizontal"-->
+                <!--&gt;-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/actionText"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textSize="@dimen/textSize_small"/>-->
+            <!--</LinearLayout>-->
+        <!--</RelativeLayout>-->
+    <!--</LinearLayout>-->
+    <com.zwh.common.widget.NormalTitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.zwh.common.widget.NormalTitleBar>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:id="@+id/headImgView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/Size_56"
+                android:paddingRight="@dimen/margin_15_dp"
+                android:paddingLeft="@dimen/margin_15_dp"
+                android:background="@drawable/click_background_style"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="更换头像"/>
+
+                <ImageView
+                    android:id="@+id/headImg"
+                    android:layout_width="@dimen/Size_40"
+                    android:layout_height="@dimen/Size_40"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/margin_6_dp"
+                    android:src="@drawable/ic_user_default"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="@dimen/margin_15_dp"
+                android:layout_marginRight="@dimen/margin_15_dp"
+                android:background="@color/divideLine"/>
+
+            <RelativeLayout
+                android:id="@+id/niceNameView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/Size_56"
+                android:paddingRight="@dimen/margin_15_dp"
+                android:paddingLeft="@dimen/margin_15_dp"
+                android:background="@drawable/click_background_style"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="更改昵称"/>
+
+                <TextView
+                    android:id="@+id/niceName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/margin_6_dp"
+                    android:text="小瓶盖"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="@dimen/margin_15_dp"
+                android:layout_marginRight="@dimen/margin_15_dp"
+                android:background="@color/divideLine"/>
+            <RelativeLayout
+                android:id="@+id/sexTypeView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/Size_56"
+                android:paddingRight="@dimen/margin_15_dp"
+                android:paddingLeft="@dimen/margin_15_dp"
+                android:background="@drawable/click_background_style"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="更改性别"/>
+
+                <TextView
+                    android:id="@+id/sexType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/margin_6_dp"
+                    android:text="女"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="@dimen/margin_15_dp"
+                android:layout_marginRight="@dimen/margin_15_dp"
+                android:background="@color/divideLine"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

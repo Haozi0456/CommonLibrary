@@ -1,8 +1,5 @@
 package com.zwh.demo.ui.home.bean;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import java.io.Serializable;
 
 /**

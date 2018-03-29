@@ -7,14 +7,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.zwh.common.widget.NormalTitleBar
-        android:id="@+id/titleBar"
-        app:titleText="关于我们"
-        app:titleTextSize="@dimen/textSize_large"
-        app:textColor="@color/black"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-    </com.zwh.common.widget.NormalTitleBar>
 
 </LinearLayout>

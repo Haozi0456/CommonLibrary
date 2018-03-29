@@ -16,7 +16,6 @@ import com.zwh.common.base.BaseAppFragment;
 import com.zwh.common.tools.divideItemDecoration.DividerItemDecoration;
 import com.zwh.demo.R;
 import com.zwh.demo.api.ApiService;
-import com.zwh.demo.ui.home.activity.BusinessDetailsActivity;
 import com.zwh.demo.ui.home.adapter.NewsListAdapter;
 import com.zwh.demo.ui.home.bean.NewsBean;
 
@@ -93,9 +92,9 @@ public class HomeFragment extends BaseAppFragment implements BaseQuickAdapter.Re
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
                 NewsBean newsBean =  newsAdapter.getItem(position);
                 if(newsBean != null){
-                    Intent intent = new Intent(context, BusinessDetailsActivity.class);
-                    intent.putExtra("newsbean",newsBean);
-                    startActivity(intent);
+//                    Intent intent = new Intent(context, BusinessDetailsActivity.class);
+//                    intent.putExtra("newsbean",newsBean);
+//                    startActivity(intent);
                 }
             }
         });

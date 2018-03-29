@@ -38,9 +38,9 @@
         android:theme="@style/AppTheme">
 
         <!-- &lt;!&ndash; Glide配置 &ndash;&gt; -->
-        <!-- <meta-data -->
-        <!-- android:name="com.zwh.demo.utils.MyGlideModule" -->
-        <!-- android:value="GlideModule"/> -->
+         <meta-data
+         android:name=""
+         android:value="GlideModule"/>
 
 
         <!-- &lt;!&ndash; Glide集成Okhttp &ndash;&gt; -->

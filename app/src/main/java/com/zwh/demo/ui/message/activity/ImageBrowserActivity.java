@@ -18,10 +18,9 @@ import com.bumptech.glide.request.RequestOptions;
 import com.github.chrisbanes.photoview.OnPhotoTapListener;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
+import com.zwh.common.tools.statusBar.StatusBarCompat;
 import com.zwh.demo.R;
 import com.zwh.demo.ui.message.bean.PhotoBean;
-import com.zwh.demo.utils.StatusBarCompat;
-import com.zwh.demo.utils.SystemUiVisibilityUtil;
 
 
 import butterknife.BindView;
@@ -113,11 +112,11 @@ public class ImageBrowserActivity extends AppCompatActivity {
     }
 
     private void hideOrShowStatusBar() {
-        if (mIsStatusBarHidden) {
-            SystemUiVisibilityUtil.enter(ImageBrowserActivity.this);
-        } else {
-            SystemUiVisibilityUtil.exit(ImageBrowserActivity.this);
-        }
+//        if (mIsStatusBarHidden) {
+//            SystemUiVisibilityUtil.enter(ImageBrowserActivity.this);
+//        } else {
+//            SystemUiVisibilityUtil.exit(ImageBrowserActivity.this);
+//        }
         mIsStatusBarHidden = !mIsStatusBarHidden;
     }
 
