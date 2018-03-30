@@ -19,7 +19,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        compile 'com.github.Haozi0456:CommonLibrary:v1.0.7'
+	        compile 'com.github.Haozi0456:CommonLibrary:lastVersion'
 	}
 
 
