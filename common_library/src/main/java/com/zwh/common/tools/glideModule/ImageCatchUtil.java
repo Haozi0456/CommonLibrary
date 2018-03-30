@@ -162,7 +162,7 @@ public class ImageCatchUtil {
      * @param size size
      * @return size
      */
-    public static String getFormatSize(double size) {
+    public String getFormatSize(double size) {
 
         double kiloByte = size / 1024;
 //        if (kiloByte < 1) {

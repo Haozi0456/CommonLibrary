@@ -9,6 +9,7 @@ import android.view.WindowManager;
 
 import com.zwh.demo.MainActivity;
 import com.zwh.demo.R;
+import com.zwh.demo.ui.login.activity.LoginActivity;
 
 
 /**
@@ -33,7 +34,7 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-                Intent mainIntemt = new Intent(SplashActivity.this,MainActivity.class);
+                Intent mainIntemt = new Intent(SplashActivity.this,LoginActivity.class);
                 SplashActivity.this.startActivity(mainIntemt);
                 SplashActivity.this.finish();
 //                Intent mainIntemt = new Intent(SplashActivity.this,LoginActivity.class);

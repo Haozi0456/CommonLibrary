@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.zwh.common.base.BaseAppActivity;
 import com.zwh.common.tools.divideItemDecoration.DividerItemDecoration;
 import com.zwh.demo.R;
 import com.zwh.demo.ui.demo.adapter.CustomListAdapter;
@@ -26,7 +27,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class RefreshLayoutDemoActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
+public class RefreshLayoutDemoActivity extends BaseAppActivity implements SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
 
 
     @BindView(R.id.recyclerView)
@@ -37,11 +38,23 @@ public class RefreshLayoutDemoActivity extends AppCompatActivity implements Swip
     private List<TestBean> listData = null;
     private Handler handler;
     private View loadingView;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_refresh_layout_demo);
-        ButterKnife.bind(this);
+    protected int getLayoutId() {
+        return R.layout.activity_refresh_layout_demo;
+    }
+
+    @Override
+    protected void afterCreate(Bundle savedInstanceState) {
+        setTitle("下拉刷新");
+        setBackClick(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
         initRefreshLayout();
         initUI();
 

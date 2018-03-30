@@ -10,6 +10,9 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowAnimationStyle">@style/activityAnimation</item>
+
+        <item name="actionSheetStyle">@style/ActionSheetStyleiOS7</item>
+
     </style>
 
     <style name="AnimBottom" parent="@android:style/Animation">
@@ -64,6 +67,32 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <!--ActionSheetStyle iOS7 Style -->
+    <style name="ActionSheetStyleiOS7">
+        <item name="actionSheetBackground">@android:color/transparent</item>
+        <item name="cancelButtonBackground">@drawable/slt_as_ios7_cancel_bt</item>
+        <item name="otherButtonTopBackground">@drawable/slt_as_ios7_other_bt_top</item>
+        <item name="otherButtonMiddleBackground">@drawable/slt_as_ios7_other_bt_middle</item>
+        <item name="otherButtonBottomBackground">@drawable/slt_as_ios7_other_bt_bottom</item>
+        <item name="otherButtonSingleBackground">@drawable/slt_as_ios7_other_bt_single</item>
+        <item name="cancelButtonTextColor">@color/main_colorPrimary</item>
+        <item name="otherButtonTextColor">@color/main_colorPrimary</item>
+        <item name="actionSheetPadding">10dp</item>
+        <item name="otherButtonSpacing">0dp</item>
+        <item name="cancelButtonMarginTop">10dp</item>
+        <item name="actionSheetTextSize">@dimen/textSize_small</item>
+    </style>
+
+    <!--权限选择样式-->
+    <style name="PermissionBlueStyle">
+        <item name="PermissionTitleColor">@color/colorPrimaryDark</item>
+        <item name="PermissionMsgColor">@color/colorPrimary</item>
+        <item name="PermissionItemTextColor">@color/colorPrimary</item>
+        <item name="PermissionButtonBackground">@drawable/permission_button_bg</item>
+        <item name="PermissionBackround">@drawable/shape_bg_white</item>
+        <item name="PermissionButtonTextColor">@android:color/white</item>
     </style>
 
 </resources>

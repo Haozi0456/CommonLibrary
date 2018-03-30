@@ -1,10 +1,12 @@
 package com.zwh.demo.ui.login.activity;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -17,11 +19,16 @@ import com.zwh.common.widget.PasswordEditText;
 import com.zwh.demo.MainActivity;
 import com.zwh.demo.R;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import me.weyye.hipermission.HiPermission;
+import me.weyye.hipermission.PermissionCallback;
+import me.weyye.hipermission.PermissionItem;
 import okhttp3.internal.platform.Platform;
 
 
@@ -81,6 +88,7 @@ public class LoginActivity extends AppCompatActivity {
         };
 
         initUI();
+        initPermission();
     }
 
     private void initUI() {
@@ -101,6 +109,45 @@ public class LoginActivity extends AppCompatActivity {
 //                }
 //            }
 //        });
+    }
+
+    /**
+     * 初始化权限申请
+     */
+    private void initPermission() {
+        List<PermissionItem> permissionItems = new ArrayList<>();
+        permissionItems.add(new PermissionItem(Manifest.permission.CAMERA, "照相机", R.drawable.permission_ic_camera));
+        permissionItems.add(new PermissionItem(Manifest.permission.WRITE_EXTERNAL_STORAGE, "写入存储", R.drawable.permission_ic_storage));
+        permissionItems.add(new PermissionItem(Manifest.permission.RECORD_AUDIO, "录音", R.drawable.permission_ic_micro_phone));
+        permissionItems.add(new PermissionItem(Manifest.permission.BODY_SENSORS, "传感器", R.drawable.permission_ic_sensors));
+        permissionItems.add(new PermissionItem(Manifest.permission.ACCESS_FINE_LOCATION, "定位", R.drawable.permission_ic_location));
+        HiPermission.create(context)
+//                .title("Dear God")
+                .permissions(permissionItems)
+                .filterColor(ResourcesCompat.getColor(getResources(), R.color.colorPrimary, getTheme()))//permission icon color
+//                .msg("To protect the peace of the world, open these permissions! You and I together save the world!")
+                .style(R.style.PermissionBlueStyle)
+                .checkMutiPermission(new PermissionCallback() {
+                    @Override
+                    public void onClose() {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        // showToast("所有权限申请完成");
+//                copyFileToSDCard();
+//                getConfigFromServer();
+                    }
+
+                    @Override
+                    public void onDeny(String permission, int position) {
+                    }
+
+                    @Override
+                    public void onGuarantee(String permission, int position) {
+                    }
+                });
     }
 
     @OnClick({R.id.loginButton, R.id.loginQQ, R.id.loginWX, R.id.loginWB,R.id.forgetButton, R.id.registButton})

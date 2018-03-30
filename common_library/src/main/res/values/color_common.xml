@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">@color/main_color</color>
-    <color name="colorPrimaryDark">@color/main_color</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">@color/main_colorPrimary</color>
+    <color name="colorPrimaryDark">@color/main_colorPrimary</color>
+    <color name="colorAccent">@color/main_colorAccent</color>
 
     <color name="e0">#e0e0e0</color>
 
-    <color name="main_color">#2A8CFF</color>
-    <color name="main_focus_color">#4baff0</color>
+    <!--app主题色_标题栏颜色-->
+    <color name="main_colorPrimary">#2A8CFF</color>
+    <!--app主题色_状态栏颜色-->
+    <color name="main_colorPrimaryDark">#4baff0</color>
+    <!--app主题色_光标颜色-->
+    <color name="main_colorAccent">#FF4081</color>
+
     <color name="textLabelColor">#383838</color>
     <color name="text56">#565656</color>
     <color name="text6c">#6c6c6c</color>

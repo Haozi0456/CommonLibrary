@@ -17,11 +17,9 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.github.chrisbanes.photoview.OnPhotoTapListener;
 import com.github.chrisbanes.photoview.PhotoView;
-import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.zwh.common.tools.statusBar.StatusBarCompat;
 import com.zwh.demo.R;
 import com.zwh.demo.ui.message.bean.PhotoBean;
-
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,7 +42,7 @@ public class ImageBrowserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StatusBarCompat.translucentStatusBar(this);
+//        StatusBarCompat.translucentStatusBar(this);
         setContentView(R.layout.activity_image_browser);
         this.context = this;
         ButterKnife.bind(this);

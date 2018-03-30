@@ -38,9 +38,9 @@
         android:theme="@style/AppTheme">
 
         <!-- &lt;!&ndash; Glide配置 &ndash;&gt; -->
-         <meta-data
-         android:name=""
-         android:value="GlideModule"/>
+         <!--<meta-data-->
+         <!--android:name=""-->
+         <!--android:value="GlideModule"/>-->
 
 
         <!-- &lt;!&ndash; Glide集成Okhttp &ndash;&gt; -->
@@ -72,6 +72,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".ui.login.activity.LoginActivity"/>
+        <activity android:name=".ui.login.activity.RegistActivity"/>
+        <activity android:name=".ui.demo.activity.RefreshLayoutDemoActivity"/>
+        <activity android:name=".ui.message.activity.ImageBrowserActivity" />
         <!--<activity-->
             <!--android:name="com.mob.tools.MobUIShell"-->
             <!--android:configChanges="keyboardHidden|orientation|screenSize"-->

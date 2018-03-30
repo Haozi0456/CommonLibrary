@@ -111,25 +111,7 @@ public class PersonalInfoActivity extends AppCompatActivity implements View.OnCl
                 finish();
                 break;
             case R.id.headImgView:
-                showSelectPhotoWindow();
-                break;
-            case R.id.choose_by_local://从相册里面取照片
-                dialog_choose_img_way.cancel();
-                Intent intent1 = new Intent(Intent.ACTION_PICK, null);
-                intent1.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-                startActivityForResult(intent1, 1);
-                break;
-            case R.id.choose_by_camera://调用相机拍照
-                dialog_choose_img_way.cancel();
-                Intent intent2 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                intent2.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(context.getExternalFilesDir(null).getPath() + "/head/", "head.jpg")));
-                startActivityForResult(intent2, 2);//采用ForResult打开
-                break;
-            case R.id.pop_layout:
-                dialog_choose_img_way.cancel();
-                break;
-            case R.id.dialog_cancel:
-                dialog_choose_img_way.cancel();
+
                 break;
             case R.id.niceNameView:
                 break;
@@ -220,18 +202,6 @@ public class PersonalInfoActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
-    public void showSelectPhotoWindow() {
-        dialog_choose_img_way = new Dialog(context, R.style.MyDialogStyle);
-        dialog_choose_img_way.setContentView(R.layout.photo_select_view);
-        dialog_choose_img_way.setCanceledOnTouchOutside(true);
-        dialog_choose_img_way.findViewById(R.id.pop_layout).setOnClickListener(this);
-        dialog_choose_img_way.findViewById(R.id.dialog_cancel).setOnClickListener(this);
-        // 拍照上传
-        dialog_choose_img_way.findViewById(R.id.choose_by_camera).setOnClickListener(this);
-        // 本地上传
-        dialog_choose_img_way.findViewById(R.id.choose_by_local).setOnClickListener(this);
-        dialog_choose_img_way.show();
-    }
 
     private void showMsg(String msg) {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();

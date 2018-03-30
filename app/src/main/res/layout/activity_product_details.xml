@@ -91,7 +91,7 @@
             android:layout_margin="@dimen/margin_16_dp"
             android:src="@drawable/icon_share"
             app:layout_anchor="@id/appBar"
-            app:backgroundTint="@color/main_focus_color"
+            app:backgroundTint="@color/main_colorPrimaryDark"
             app:layout_anchorGravity="bottom|end"/>
 
     </android.support.design.widget.CoordinatorLayout>

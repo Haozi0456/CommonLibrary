@@ -1,47 +1,42 @@
 package com.zwh.demo.ui.personal.fragment;
 
-import android.app.Dialog;
-import android.app.Fragment;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.baoyz.actionsheet.ActionSheet;
+import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.LogUtils;
+import com.zwh.common.appUtils.ImageLoaderUtils;
 import com.zwh.common.base.BaseAppFragment;
+import com.zwh.common.tools.glideModule.ImageCatchUtil;
 import com.zwh.demo.R;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+import cn.bingoogolapple.photopicker.activity.BGAPhotoPickerActivity;
+import cn.bingoogolapple.photopicker.util.BGAPhotoHelper;
+import cn.bingoogolapple.photopicker.util.BGAPhotoPickerUtil;
 
 import static android.app.Activity.RESULT_OK;
 
 
-public class PersonalFragment extends BaseAppFragment implements View.OnClickListener{
-
+public class PersonalFragment extends BaseAppFragment implements View.OnClickListener, ActionSheet.ActionSheetListener {
 
 
     @BindView(R.id.loginIcon)
@@ -52,26 +47,26 @@ public class PersonalFragment extends BaseAppFragment implements View.OnClickLis
     RelativeLayout settingView;
     @BindView(R.id.aboutView)
     RelativeLayout aboutView;
+    @BindView(R.id.cacheText)
+    TextView cacheText;
+    @BindView(R.id.clearnCacheView)
+    RelativeLayout clearnCacheView;
 
-    // 选择图片
-    private Dialog dialog_choose_img_way;
+
     private String path = "";
     private Bitmap head;//头像Bitmap
+
+    private static int RC_CHOOSE_PHOTO = 100;
+    private static int REQUEST_CODE_TAKE_PHOTO = 101;
+    private static int REQUEST_CODE_CROP = 102;
+
+    private BGAPhotoHelper mPhotoHelper;
+
+    private ImageCatchUtil catchUtil;
 
     public PersonalFragment() {
         // Required empty public constructor
     }
-
-
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        // Inflate the layout for this fragment
-//        View view = inflater.inflate(R.layout.fragment_personal, container, false);
-//        this.context = getActivity().getApplicationContext();
-//        ButterKnife.bind(this, view);
-//        initUI();
-//        return view;
-//    }
 
     @Override
     protected int getLayoutId() {
@@ -82,33 +77,20 @@ public class PersonalFragment extends BaseAppFragment implements View.OnClickLis
     protected void afterCreate(Bundle savedInstanceState) {
         setTitle("我的");
         isShowBack(false);
+
+        catchUtil = ImageCatchUtil.getInstance(context);
+
+        // 拍照后照片的存放目录，改成你自己拍照后要存放照片的目录。如果不传递该参数的话就没有拍照功能
+        File takePhotoDir = new File(Environment.getExternalStorageDirectory(), AppUtils.getAppName());
+        mPhotoHelper = new BGAPhotoHelper(takePhotoDir);
+
         initUI();
     }
 
     private void initUI() {
 
-        RequestOptions options = new RequestOptions()
-                .centerCrop();
-
-        //初始化头像
-        Glide.with(context).asBitmap().apply(options).load(R.drawable.ic_user_default).into(new BitmapImageViewTarget(loginIcon) {
-            @Override
-            protected void setResource(Bitmap resource) {
-                RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), resource);
-                circularBitmapDrawable.setCircular(true);
-                loginIcon.setImageDrawable(circularBitmapDrawable);
-            }
-
-            @Override
-            public void onLoadFailed(Drawable errorDrawable) {
-                super.onLoadFailed(errorDrawable);
-                Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(),R.drawable.ic_user_default);
-                RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(),bitmap);
-                circularBitmapDrawable.setCircular(true);
-                loginIcon.setImageDrawable(circularBitmapDrawable);
-            }
-        });
-
+        ImageLoaderUtils.displayRound(context, loginIcon, path);
+        cacheText.setText(catchUtil.getCacheFormatSize());
     }
 
 
@@ -117,139 +99,115 @@ public class PersonalFragment extends BaseAppFragment implements View.OnClickLis
         super.onDestroyView();
     }
 
-    @OnClick({R.id.loginIcon, R.id.facoriteView, R.id.settingView, R.id.aboutView})
+    @OnClick({R.id.loginIcon, R.id.facoriteView, R.id.settingView, R.id.aboutView, R.id.clearnCacheView})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.loginIcon:
-                showSelectPhotoWindow();
-                break;
-            case R.id.choose_by_local://从相册里面取照片
-                dialog_choose_img_way.cancel();
-                Intent intent1 = new Intent(Intent.ACTION_PICK, null);
-                intent1.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-                startActivityForResult(intent1, 1);
-                break;
-            case R.id.choose_by_camera://调用相机拍照
-                dialog_choose_img_way.cancel();
-                Intent intent2 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                intent2.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(context.getExternalFilesDir(null).getPath()+"/head/", "head.jpg")));
-                startActivityForResult(intent2, 2);//采用ForResult打开
-                break;
-            case R.id.pop_layout:
-                dialog_choose_img_way.cancel();
-                break;
-            case R.id.dialog_cancel:
-                dialog_choose_img_way.cancel();
+                showChooseActionSheet();
                 break;
             case R.id.facoriteView:
                 break;
             case R.id.settingView:
+                break;
+            case R.id.clearnCacheView://清除缓存
+                showClearnCache();
                 break;
             case R.id.aboutView:
                 break;
         }
     }
 
+    private void showClearnCache() {
+        new MaterialDialog.Builder(context)
+                .title("提示:")
+                .content("是否确定清除缓存?")
+                .canceledOnTouchOutside(true)
+                .positiveText("确定").negativeText("取消")
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                catchUtil.clearImageDiskCache();
+                            }
+                        }).start();
+                        cacheText.setText(catchUtil.getFormatSize(0.0d));
+                    }
+                }).onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+
+                    }
+                }).show();
+    }
+
+
+    private void showChooseActionSheet() {
+        ActionSheet.createBuilder(context, getFragmentManager()).setCancelButtonTitle("取消").setOtherButtonTitles("从相册获取", "拍照").setCancelableOnTouchOutside(true).setListener(this).show();
+    }
+
+    @Override
+    public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
+
+    }
+
+    @Override
+    public void onOtherButtonClick(ActionSheet actionSheet, int index) {
+        switch (index) {
+            case 0:
+                choicePhotoWrapper();
+                break;
+            case 1: //拍照
+                try {
+                    startActivityForResult(mPhotoHelper.getTakePhotoIntent(), REQUEST_CODE_TAKE_PHOTO);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+        }
+    }
+
+
+    private void choicePhotoWrapper() {
+        // 拍照后照片的存放目录，改成你自己拍照后要存放照片的目录。如果不传递该参数的话就没有拍照功能
+        File takePhotoDir = new File(Environment.getExternalStorageDirectory(), AppUtils.getAppName());
+
+        Intent photoPickerIntent = new BGAPhotoPickerActivity.IntentBuilder(context).cameraFileDir(takePhotoDir) // 拍照后照片的存放目录，改成你自己拍照后要存放照片的目录。如果不传递该参数的话则不开启图库里的拍照功能
+                .maxChooseCount(9) // 图片选择张数的最大值
+                .selectedPhotos(null) // 当前已选中的图片路径集合
+                .pauseOnScroll(false) // 滚动列表时是否暂停加载图片
+                .build();
+        startActivityForResult(photoPickerIntent, RC_CHOOSE_PHOTO);
+
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case 1:
-                if (resultCode == RESULT_OK) {
-                    cropPhoto(data.getData());//裁剪图片
+        if (resultCode == RESULT_OK && requestCode == RC_CHOOSE_PHOTO) {
+            List<String> selectedPhotos = BGAPhotoPickerActivity.getSelectedPhotos(data);
+            if (selectedPhotos.size() > 0) {
+                try {
+                    startActivityForResult(mPhotoHelper.getCropIntent(selectedPhotos.get(0), 200, 200), REQUEST_CODE_CROP);
+                } catch (IOException e) {
+                    BGAPhotoPickerUtil.show(R.string.bga_pp_not_support_crop);
+                    e.printStackTrace();
                 }
-                break;
-            case 2:
-                if (resultCode == RESULT_OK) {
-                    File temp = new File(context.getExternalFilesDir(null).getPath() + "/head/" + "head.jpg");
-                    cropPhoto(Uri.fromFile(temp));//裁剪图片
-                }
-                break;
-            case 3:
-                if (data != null) {
-                    Bundle extras = data.getExtras();
-                    head = extras.getParcelable("data");
-                    if (head != null) {
-                        /**
-                         * 上传服务器代码
-                         */
-                        setPicToView(head);//
-                        String fileName = path + "head.jpg";//图片名字
-                        File file = new File(fileName);
-                        if(file.exists()){
-//                            toModifyHeadImage(head);
-                            showMsg("头像修改成功!");
-                            RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), head);
-                            circularBitmapDrawable.setCircular(true);
-                            loginIcon.setImageDrawable(circularBitmapDrawable);
-                        }
-
-                    }
-                }
-                break;
-        }
-    }
-
-    /**
-     * 调用系统的裁剪
-     *
-     * @param uri
-     */
-    public void cropPhoto(Uri uri) {
-        Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setDataAndType(uri, "image/*");
-        intent.putExtra("crop", "true");
-        // aspectX aspectY 是宽高的比例
-        intent.putExtra("aspectX", 1);
-        intent.putExtra("aspectY", 1);
-        // outputX outputY 是裁剪图片宽高
-        intent.putExtra("outputX", 150);
-        intent.putExtra("outputY", 150);
-        intent.putExtra("return-data", true);
-        startActivityForResult(intent, 3);
-    }
-
-    private void setPicToView(Bitmap mBitmap) {
-        String sdStatus = Environment.getExternalStorageState();
-        if (!sdStatus.equals(Environment.MEDIA_MOUNTED)) { // 检测sd是否可用
-            return;
-        }
-        FileOutputStream b = null;
-        File file = new File(path);
-        file.mkdirs();// 创建文件夹
-        String fileName = path + "head.jpg";//图片名字
-        try {
-            b = new FileOutputStream(fileName);
-            mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, b);// 把数据写入文件
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } finally {
+            }
+        } else if (requestCode == REQUEST_CODE_TAKE_PHOTO) {//拍照返回
             try {
-                //关闭流
-                b.flush();
-                b.close();
-            } catch (IOException e) {
+                startActivityForResult(mPhotoHelper.getCropIntent(mPhotoHelper.getCameraFilePath(), 200, 200), REQUEST_CODE_CROP);
+            } catch (Exception e) {
+                mPhotoHelper.deleteCameraFile();
+                mPhotoHelper.deleteCropFile();
+                BGAPhotoPickerUtil.show(R.string.bga_pp_not_support_crop);
                 e.printStackTrace();
             }
+        } else if (requestCode == REQUEST_CODE_CROP) {//裁剪照片返回
+            ImageLoaderUtils.displayRound(context, loginIcon, mPhotoHelper.getCropFilePath());
         }
     }
 
-    public void showSelectPhotoWindow() {
-        dialog_choose_img_way = new Dialog(context, R.style.MyDialogStyle);
-        dialog_choose_img_way.setContentView(R.layout.photo_select_view);
-        dialog_choose_img_way.setCanceledOnTouchOutside(true);
-        dialog_choose_img_way.findViewById(R.id.pop_layout).setOnClickListener(this);
-        dialog_choose_img_way.findViewById(R.id.dialog_cancel).setOnClickListener(this);
-        // 拍照上传
-        dialog_choose_img_way.findViewById(R.id.choose_by_camera).setOnClickListener(this);
-        // 本地上传
-        dialog_choose_img_way.findViewById(R.id.choose_by_local).setOnClickListener(this);
-        dialog_choose_img_way.show();
-    }
-
-    private void showMsg(String msg){
-        Toast.makeText(context,msg,Toast.LENGTH_SHORT).show();
-    }
 
 }

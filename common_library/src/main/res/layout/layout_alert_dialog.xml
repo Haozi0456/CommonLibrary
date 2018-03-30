@@ -14,7 +14,7 @@
         android:paddingLeft="@dimen/margin_16_dp"
         android:paddingTop="@dimen/margin_8_dp"
         android:text="提示:"
-        android:textColor="@color/main_color"
+        android:textColor="@color/main_colorPrimary"
         android:textSize="@dimen/textSize_small" />
 
     <TextView
@@ -41,7 +41,7 @@
             android:layout_alignParentRight="true"
             android:background="@null"
             android:text="确定"
-            android:textColor="@color/main_color" />
+            android:textColor="@color/main_colorPrimary" />
 
         <Button
             android:id="@+id/cancleButton"
@@ -50,6 +50,6 @@
             android:layout_toLeftOf="@id/sureButton"
             android:background="@null"
             android:text="取消"
-            android:textColor="@color/main_color" />
+            android:textColor="@color/main_colorPrimary" />
     </RelativeLayout>
 </LinearLayout>

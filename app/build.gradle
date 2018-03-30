@@ -43,7 +43,18 @@ dependencies {
     //列表适配器
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
     //
+    //actionSheet 操作表控件
+    compile 'com.baoyz.actionsheet:library:1.1.7'
 
+    //Android 图片选择、预览、九宫格图片控件、拖拽排序九宫格图片控件
+    compile 'cn.bingoogolapple:bga-baseadapter:1.2.7@aar'
+    compile 'cn.bingoogolapple:bga-photopicker:1.2.8'
+
+    //权限控制
+    compile 'me.weyye.hipermission:library:1.0.7'
+
+    //material-dialogs 弹出对话框
+    compile 'com.afollestad.material-dialogs:core:0.9.4.5'
 
 }
 

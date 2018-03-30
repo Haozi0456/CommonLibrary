@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-import com.ashokvarma.bottomnavigation.TextBadgeItem;
 import com.blankj.utilcode.util.ToastUtils;
 import com.zwh.common.utils.CustomViewPager;
 import com.zwh.demo.ui.demo.fragment.DemoListFragment;
@@ -118,10 +117,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 //        ShapeBadgeItem shapeBadgeItem = new ShapeBadgeItem();
 //        shapeBadgeItem.setShape(ShapeBadgeItem.SHAPE_HEART);
 //        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.nav_map, "地图").setActiveColorResource(R.color.main_color).setBadgeItem(numberBadgeItem));
-        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.smartbar_home_sele, "首页").setActiveColorResource(R.color.main_color));
-        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.smartbar_cate_sele, "示例").setActiveColorResource(R.color.main_color));
-        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.pictures_sele, "美图").setActiveColorResource(R.color.main_color));
-        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.smartbar_my_sele, "我的").setActiveColorResource(R.color.main_color));
+        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.smartbar_home_sele, "首页").setActiveColorResource(R.color.main_colorPrimary));
+        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.smartbar_cate_sele, "示例").setActiveColorResource(R.color.main_colorPrimary));
+        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.pictures_sele, "美图").setActiveColorResource(R.color.main_colorPrimary));
+        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.smartbar_my_sele, "我的").setActiveColorResource(R.color.main_colorPrimary));
 
 
         bottomNavigationBar.setFirstSelectedPosition(0).initialise();

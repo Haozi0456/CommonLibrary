@@ -3,7 +3,7 @@
                 android:id="@+id/common_title"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:background="@color/main_color"
+                android:background="@color/main_colorPrimary"
                 android:minHeight="48dp"
                 android:orientation="horizontal">
     <!-- 公共的的标题栏 -->
